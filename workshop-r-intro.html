@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="cs-CZ"><head>
+<script src="workshop-r-intro_files/libs/clipboard/clipboard.min.js"></script>
+<script src="workshop-r-intro_files/libs/quarto-html/tabby.min.js"></script>
+<script src="workshop-r-intro_files/libs/quarto-html/popper.min.js"></script>
+<script src="workshop-r-intro_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="workshop-r-intro_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="workshop-r-intro_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="workshop-r-intro_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.1.189">
+
+  <meta name="author" content="Marek Prokop">
+  <title>Úvod do R a RStudia</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="workshop-r-intro_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="workshop-r-intro_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="workshop-r-intro_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="workshop-r-intro_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="workshop-r-intro_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="workshop-r-intro_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="workshop-r-intro_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  
+  <link href="workshop-r-intro_files/libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+  <script src="workshop-r-intro_files/libs/pagedtable-1.1/js/pagedtable.js"></script>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="center">
+  <h1 class="title">Úvod do R a RStudia</h1>
+  <p class="subtitle">Po dvou hodinách zvládnete v R víc, než v Excelu po pěti letech ;-)</p>
+  <p class="author">Marek Prokop</p>
+  <p class="institute">PROKOP software s.r.o.</p>
+  <p class="date">6. 10. 2022</p>
+</section>
+
+<section>
+<section id="co-je-r" class="title-slide slide level1 center">
+<h1>Co je R</h1>
+
+</section>
+<section id="programovací-jazyk-pro-statistiku-a-práci-s-daty" class="slide level2">
+<h2>Programovací jazyk pro statistiku a&nbsp;práci s daty</h2>
+<ul>
+<li>je open source</li>
+<li>je zadarmo</li>
+<li>běží na všech běžných operačních systémech</li>
+<li>má rozsáhlou a velmi přátelskou komunitu</li>
+<li>může běžet i v cloudu</li>
+</ul>
+</section></section>
+<section>
+<section id="v-čem-je-r-lepší-než-excel" class="title-slide slide level1 center">
+<h1>V čem je R lepší než Excel</h1>
+
+</section>
+<section id="dokumentovaný-postup" class="slide level2">
+<h2>Dokumentovaný postup</h2>
+<p>Když teď něco uděláte, dokážete i po roce zjist, jak jste to udělali, a&nbsp;proč zrovna takhle.</p>
+</section>
+<section id="reprodukovatelnost" class="slide level2">
+<h2>Reprodukovatelnost</h2>
+<p>Co uděláte jednou, dokážete kdykoli zopakovat s jinými daty či parametry.</p>
+</section>
+<section id="spolupráce" class="slide level2">
+<h2>Spolupráce</h2>
+<p>Práci na větším projektu snadno rozdělíte mezi víc lidí. kód můžete verzovat v Gitu.</p>
+</section>
+<section id="rychlost" class="slide level2">
+<h2>Rychlost</h2>
+<p>R má víc funkcí než Excel, umí toho víc, a v důsledku uděláte práci rychleji. Někdy fakt o&nbsp;hodně rychleji.</p>
+</section>
+<section id="přístup-k-datům" class="slide level2">
+<h2>Přístup k datům</h2>
+<p>R dokáže načítat data z databází, spreadsheetů, textových souborů, webu a všech možných API. Cpy&amp;paste už nebudete potřebovat.</p>
+</section>
+<section id="automatizace" class="slide level2">
+<h2>Automatizace</h2>
+<p>Pomocí R dokážete automatizovat i dost komplexní procesy a&nbsp;postupy.</p>
+</section>
+<section id="výstupy" class="slide level2">
+<h2>Výstupy</h2>
+<p>V R jdou tvořit luxusní reporty, dashboardy a mnoho jiných výstupů. I tato prezentace je napsaná v R.</p>
+</section></section>
+<section id="v-čem-je-r-horší-než-excel" class="title-slide slide level1 center">
+<h1>V čem je R horší než Excel</h1>
+<div class="fragment fade-left">
+<p>Musíte se ho naučit.</p>
+</div>
+</section>
+
+<section>
+<section id="instalace-a-nastavení" class="title-slide slide level1 center">
+<h1>Instalace a nastavení</h1>
+
+</section>
+<section id="instalace-r" class="slide level2">
+<h2>Instalace R</h2>
+<p>Především potřebujete základní jazyk R. Nainstalujete ho z&nbsp;adresy <a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a>.</p>
+
+<img data-src="https://www.prokopsw.cz/bookdown/excel-r/img/r-01.png" class="r-stretch"></section>
+<section id="instalace-rstudia" class="slide level2">
+<h2>Instalace RStudia</h2>
+<p>Nainstalujte bezplatnou verzi <strong>RStudio Desktop</strong> z&nbsp;adresy <a href="https://www.rstudio.com/products/rstudio/download/" class="uri">https://www.rstudio.com/products/rstudio/download/</a>.</p>
+
+<img data-src="images/paste-486C002D.png" class="r-stretch quarto-figure-center"></section>
+<section id="nastavení-rstudia-.rdata" class="slide level2">
+<h2>Nastavení RStudia – .RData</h2>
+
+<img data-src="https://www.prokopsw.cz/bookdown/excel-r/img/rstudio-options-01.png" class="r-stretch"></section>
+<section id="nastavení-rstudia-native-pipe" class="slide level2">
+<h2>Nastavení RStudia – native pipe</h2>
+
+<img data-src="https://www.prokopsw.cz/bookdown/excel-r/img/rstudio-options-02.png" class="r-stretch"></section>
+<section id="balíčky" class="slide level2">
+<h2>Balíčky</h2>
+<p>Funkčnost základního R rozšiřují balíčky (<em>packages</em>). Pro začátek si nainstalujte balíček <strong>tidyverse</strong>.</p>
+<p>Menu <em>Tools</em> příkaz <em>Install Packages</em></p>
+
+<img data-src="https://www.prokopsw.cz/bookdown/excel-r/img/install-packages-01.png" class="r-stretch"></section>
+<section id="založe-si-školní-projekt" class="slide level2">
+<h2>Založe si „školní” projekt</h2>
+<p>Příkaz <em>New Project…</em> z&nbsp;menu <em>File</em></p>
+
+<img data-src="https://www.prokopsw.cz/bookdown/excel-r/img/rstudio-project-01.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="https://www.prokopsw.cz/bookdown/excel-r/img/rstudio-project-02.png" class="r-stretch"></section>
+<section class="slide level2">
+
+<p><img data-src="https://www.prokopsw.cz/bookdown/excel-r/img/rstudio-project-03.png"> # Práce v RStudiu</p>
+</section>
+<section id="interaktivní-práce-v-konzoli" class="slide level2">
+<h2>Interaktivní práce v konzoli</h2>
+
+<img data-src="images/paste-0C0C9395.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="images/paste-14B8FE5D.png" class="r-stretch quarto-figure-center"><p class="caption">Operátor &lt;- vložíte Alt+-</p></section>
+<section class="slide level2">
+
+
+<img data-src="images/paste-3025FB06.png" class="r-stretch"></section>
+<section id="psaní-skriptů" class="slide level2">
+<h2>Psaní skriptů</h2>
+
+<img data-src="images/paste-F62DB4C4.png" class="r-stretch quarto-figure-center"><p class="caption">File -&gt; New File -&gt; R Script</p></section>
+<section class="slide level2">
+
+
+<img data-src="images/paste-663844EA.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="images/paste-21D75E68.png" class="r-stretch"></section>
+<section id="r-markdown" class="slide level2">
+<h2>R Markdown</h2>
+
+<img data-src="images/paste-63C0EF69.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="images/paste-DCEECEC8.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="images/paste-0C05C89D.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="images/paste-E493FEDA.png" class="r-stretch"></section></section>
+<section>
+<section id="základy-r-markdownu" class="title-slide slide level1 center">
+<h1>Základy R Markdownu</h1>
+
+</section>
+<section id="proč-r-markdown" class="slide level2">
+<h2>Proč R Markdown</h2>
+<ul>
+<li><p>Všechno, co uděláte, budete mít uložené a můžete s k tomu kdykoli vrátit.</p></li>
+<li><p>Ke kódu si můžete psát vlastní komentáře – co chcete udělat, proč to děláte zrovna takhle, co z toho vyplývá atd.</p></li>
+<li><p>Můžete snadno spouštět jak celý kód, tak jeho logické části.</p></li>
+<li><p>Výsledky vidíte rovnou u kódu, který je vytvořil.</p></li>
+<li><p>Výstupy můžete snadno sdílet s lidmi, kteří R nepoužívají.</p></li>
+</ul>
+</section>
+<section id="druhy-r-markdownu" class="slide level2">
+<h2>Druhy R Markdownu</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="podle-chování">Podle chování</h3>
+<ul>
+<li><p>R Notebook</p></li>
+<li><p>R Document</p></li>
+<li><p>R Presentation</p></li>
+<li><p>Quarto Document</p></li>
+<li><p>Quarto Presentation</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="podle-výstupu">Podle výstupu</h3>
+<ul>
+<li><p>HTML</p></li>
+<li><p>PDF</p></li>
+<li><p>Word</p></li>
+<li><p>Powert Point</p></li>
+<li><p>Markdown pro Github</p></li>
+<li><p>a asi 20 dalších formátů</p></li>
+</ul>
+</div>
+</div>
+<p>Pro začátek vám bude stačit jenom <strong>R Notebook</strong>.</p>
+</section>
+<section id="markdown-pro-běžný-text" class="slide level2">
+<h2>Markdown pro běžný text</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu"># Tohle je nadpis 1. úrovně</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a>Tohle je běžný odstavec. Víc odstavců je od sebe odděleno dvěma Entry čili prázdným řádkem.</span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">## Tohle je nadpis 2. úrovně</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a>Tohle je příklad <span class="co">[</span><span class="ot">odkazu v textu</span><span class="co">](https://example.com)</span>. A tohle je příklad odrážek:</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="ss">- </span>první odrážka,</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="ss">- </span>druhá odrážka,</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="ss">- </span>třetí odrážka.</span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a>Jdou udělat i číslované body, které se automaticky očíslují podle pořadí:</span>
+<span id="cb1-14"><a href="#cb1-14"></a></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="ss">1. </span>První bod.</span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="ss">1. </span>Druhý bod.</span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="ss">1. </span>Poslední bod.</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="markdown-pro-běžný-text-výsledek" class="slide level2">
+<h2>Markdown pro běžný text – výsledek</h2>
+
+<img data-src="https://www.prokopsw.cz/bookdown/excel-r/img/markdown-01.png" class="r-stretch"></section>
+<section id="markdown-s-kódem-v-r" class="slide level2">
+<h2>Markdown s kódem v R</h2>
+<p><br>
+R Mardown je Markdown, do kterého jsou zamíchané kusy eRkového kódu.</p>
+<p><br>
+</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Libovolný text v Markdownu…</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">+</span> <span class="dv">15</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>Jiný libovolný text v Markdownu…</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">-</span> <span class="dv">10</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br>
+Blok kódu v R přidáte klávesovou zkratkou <code>Ctrl</code>+<code>Alt</code>+<code>I</code>.</p>
+</section>
+<section id="výpis-tabulky" class="slide level2">
+<h2>Výpis tabulky</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>mtcars</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["mpg"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["disp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["drat"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["wt"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["qsec"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["vs"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["am"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["gear"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["carb"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"21.0","2":"6","3":"160.0","4":"110","5":"3.90","6":"2.620","7":"16.46","8":"0","9":"1","10":"4","11":"4","_rn_":"Mazda RX4"},{"1":"21.0","2":"6","3":"160.0","4":"110","5":"3.90","6":"2.875","7":"17.02","8":"0","9":"1","10":"4","11":"4","_rn_":"Mazda RX4 Wag"},{"1":"22.8","2":"4","3":"108.0","4":"93","5":"3.85","6":"2.320","7":"18.61","8":"1","9":"1","10":"4","11":"1","_rn_":"Datsun 710"},{"1":"21.4","2":"6","3":"258.0","4":"110","5":"3.08","6":"3.215","7":"19.44","8":"1","9":"0","10":"3","11":"1","_rn_":"Hornet 4 Drive"},{"1":"18.7","2":"8","3":"360.0","4":"175","5":"3.15","6":"3.440","7":"17.02","8":"0","9":"0","10":"3","11":"2","_rn_":"Hornet Sportabout"},{"1":"18.1","2":"6","3":"225.0","4":"105","5":"2.76","6":"3.460","7":"20.22","8":"1","9":"0","10":"3","11":"1","_rn_":"Valiant"},{"1":"14.3","2":"8","3":"360.0","4":"245","5":"3.21","6":"3.570","7":"15.84","8":"0","9":"0","10":"3","11":"4","_rn_":"Duster 360"},{"1":"24.4","2":"4","3":"146.7","4":"62","5":"3.69","6":"3.190","7":"20.00","8":"1","9":"0","10":"4","11":"2","_rn_":"Merc 240D"},{"1":"22.8","2":"4","3":"140.8","4":"95","5":"3.92","6":"3.150","7":"22.90","8":"1","9":"0","10":"4","11":"2","_rn_":"Merc 230"},{"1":"19.2","2":"6","3":"167.6","4":"123","5":"3.92","6":"3.440","7":"18.30","8":"1","9":"0","10":"4","11":"4","_rn_":"Merc 280"},{"1":"17.8","2":"6","3":"167.6","4":"123","5":"3.92","6":"3.440","7":"18.90","8":"1","9":"0","10":"4","11":"4","_rn_":"Merc 280C"},{"1":"16.4","2":"8","3":"275.8","4":"180","5":"3.07","6":"4.070","7":"17.40","8":"0","9":"0","10":"3","11":"3","_rn_":"Merc 450SE"},{"1":"17.3","2":"8","3":"275.8","4":"180","5":"3.07","6":"3.730","7":"17.60","8":"0","9":"0","10":"3","11":"3","_rn_":"Merc 450SL"},{"1":"15.2","2":"8","3":"275.8","4":"180","5":"3.07","6":"3.780","7":"18.00","8":"0","9":"0","10":"3","11":"3","_rn_":"Merc 450SLC"},{"1":"10.4","2":"8","3":"472.0","4":"205","5":"2.93","6":"5.250","7":"17.98","8":"0","9":"0","10":"3","11":"4","_rn_":"Cadillac Fleetwood"},{"1":"10.4","2":"8","3":"460.0","4":"215","5":"3.00","6":"5.424","7":"17.82","8":"0","9":"0","10":"3","11":"4","_rn_":"Lincoln Continental"},{"1":"14.7","2":"8","3":"440.0","4":"230","5":"3.23","6":"5.345","7":"17.42","8":"0","9":"0","10":"3","11":"4","_rn_":"Chrysler Imperial"},{"1":"32.4","2":"4","3":"78.7","4":"66","5":"4.08","6":"2.200","7":"19.47","8":"1","9":"1","10":"4","11":"1","_rn_":"Fiat 128"},{"1":"30.4","2":"4","3":"75.7","4":"52","5":"4.93","6":"1.615","7":"18.52","8":"1","9":"1","10":"4","11":"2","_rn_":"Honda Civic"},{"1":"33.9","2":"4","3":"71.1","4":"65","5":"4.22","6":"1.835","7":"19.90","8":"1","9":"1","10":"4","11":"1","_rn_":"Toyota Corolla"},{"1":"21.5","2":"4","3":"120.1","4":"97","5":"3.70","6":"2.465","7":"20.01","8":"1","9":"0","10":"3","11":"1","_rn_":"Toyota Corona"},{"1":"15.5","2":"8","3":"318.0","4":"150","5":"2.76","6":"3.520","7":"16.87","8":"0","9":"0","10":"3","11":"2","_rn_":"Dodge Challenger"},{"1":"15.2","2":"8","3":"304.0","4":"150","5":"3.15","6":"3.435","7":"17.30","8":"0","9":"0","10":"3","11":"2","_rn_":"AMC Javelin"},{"1":"13.3","2":"8","3":"350.0","4":"245","5":"3.73","6":"3.840","7":"15.41","8":"0","9":"0","10":"3","11":"4","_rn_":"Camaro Z28"},{"1":"19.2","2":"8","3":"400.0","4":"175","5":"3.08","6":"3.845","7":"17.05","8":"0","9":"0","10":"3","11":"2","_rn_":"Pontiac Firebird"},{"1":"27.3","2":"4","3":"79.0","4":"66","5":"4.08","6":"1.935","7":"18.90","8":"1","9":"1","10":"4","11":"1","_rn_":"Fiat X1-9"},{"1":"26.0","2":"4","3":"120.3","4":"91","5":"4.43","6":"2.140","7":"16.70","8":"0","9":"1","10":"5","11":"2","_rn_":"Porsche 914-2"},{"1":"30.4","2":"4","3":"95.1","4":"113","5":"3.77","6":"1.513","7":"16.90","8":"1","9":"1","10":"5","11":"2","_rn_":"Lotus Europa"},{"1":"15.8","2":"8","3":"351.0","4":"264","5":"4.22","6":"3.170","7":"14.50","8":"0","9":"1","10":"5","11":"4","_rn_":"Ford Pantera L"},{"1":"19.7","2":"6","3":"145.0","4":"175","5":"3.62","6":"2.770","7":"15.50","8":"0","9":"1","10":"5","11":"6","_rn_":"Ferrari Dino"},{"1":"15.0","2":"8","3":"301.0","4":"335","5":"3.54","6":"3.570","7":"14.60","8":"0","9":"1","10":"5","11":"8","_rn_":"Maserati Bora"},{"1":"21.4","2":"4","3":"121.0","4":"109","5":"4.11","6":"2.780","7":"18.60","8":"1","9":"1","10":"4","11":"2","_rn_":"Volvo 142E"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="zobrazení-grafu" class="slide level2">
+<h2>Zobrazení grafu</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>mtcars <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(hp, mpg)) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">geom_point</span>()</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="workshop-r-intro_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section></section>
+<section>
+<section id="základy-r" class="title-slide slide level1 center">
+<h1>Základy R</h1>
+
+</section>
+<section id="čísla-a-aritmetické-operace" class="slide level2">
+<h2>Čísla a aritmetické operace</h2>
+<p><br>
+Číslo je prostě číslo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="dv">15</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fl">3.14</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.14</code></pre>
+</div>
+</div>
+<p><br>
+S čísly jde počítat.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="dv">10</span> <span class="sc">+</span> <span class="dv">20</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="dv">20</span> <span class="sc">-</span> <span class="dv">5</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="dv">20</span> <span class="sc">/</span> <span class="dv">5</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="dv">5</span> <span class="sc">*</span> <span class="dv">4</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>(<span class="dv">5</span> <span class="sc">*</span> <span class="dv">4</span>) <span class="sc">/</span> <span class="dv">2</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+</section>
+<section id="znakové-řetězce" class="slide level2">
+<h2>Znakové řetězce</h2>
+<p>Znakový řetězec se dává do uvozovek nebo apostrofů.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="st">"Tohle je zanový řetězec"</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tohle je zanový řetězec"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="st">'A tohle je taky znakový řetězec'</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "A tohle je taky znakový řetězec"</code></pre>
+</div>
+</div>
+<p>Znakové řetězce jde spojovat funkcí <code>paste</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">paste</span>(<span class="st">"první řetězec"</span>, <span class="st">"druhý řetězec"</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "první řetězec druhý řetězec"</code></pre>
+</div>
+</div>
+<p>Nebo s čárkou mezi místo mezery.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">paste</span>(<span class="st">"první řetězec"</span>, <span class="st">"druhý řetězec"</span>, <span class="at">sep =</span> <span class="st">","</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "první řetězec,druhý řetězec"</code></pre>
+</div>
+</div>
+<p>Nebo bez ničeho mezi.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">paste</span>(<span class="st">"první řetězec"</span>, <span class="st">"druhý řetězec"</span>, <span class="at">sep =</span> <span class="st">""</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "první řetězecdruhý řetězec"</code></pre>
+</div>
+</div>
+</section>
+<section id="funkce" class="slide level2">
+<h2>Funkce</h2>
+<ul>
+<li>Funkce fungují jako v Excelu, ale většinou se jmenují jinak.</li>
+<li>Parametry bez jména musí být v přesném pořadí.</li>
+<li>Pojmenované parametry mohou být v libovolném pořadí.</li>
+</ul>
+<p>Příklady:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">abs</span>(<span class="sc">-</span><span class="dv">15</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">round</span>(<span class="fl">15.9876</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15.99</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">floor</span>(<span class="fl">15.9876</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">max</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+</section>
+<section id="vektory" class="slide level2">
+<h2>Vektory</h2>
+<p>Proč se před každým výsledkem zobrazuje [1]?</p>
+<ul>
+<li><p>Protože základní datové typy v R (čísla, znakové řetězce, logické hodnoty a tzv. faktory) jsou vždy vektory.</p></li>
+<li><p>Vektor je uspořádaná posloupnost jedné či více hodnot.</p></li>
+<li><p>Výsledkem následující operace je tedy číselný vektor s jednou hodnotou.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="dv">3</span> <span class="sc">+</span> <span class="dv">5</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+</section>
+<section id="vytváření-vektorů" class="slide level2">
+<h2>Vytváření vektorů</h2>
+<p>Když chcete vytvořit vektor s více než jednou hodnotou, použijete funkci <code>c</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">4</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3 6 5 4</code></pre>
+</div>
+</div>
+<p><br>
+Nebo funkci <code>runif</code>, která generuje náhodná čísla z rovnoměrného rozložení.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">10</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 2.721511 2.380586 1.712131 5.113492 1.746217 8.769873 8.245428 1.638900
+ [9] 1.703382 5.747196 4.950679 2.982756 8.251006 8.229930 8.689887 3.911032
+[17] 3.263549 3.028433 1.078797 6.033083</code></pre>
+</div>
+</div>
+<p><br>
+Nebo funkci <code>rnorm</code>, která generuje náhodná čísla z normálního rozložení.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] -0.004470630  0.411583009 -1.267587866 -1.027993101  2.317631312
+ [6]  1.253521184 -1.200290844  0.305886511  2.176755079 -0.007824965</code></pre>
+</div>
+</div>
+<p><br>
+Nebo plno dalších funkcí. Část jich ještě poznáte, většinu ne, protože je nebudete potřebovat.</p>
+</section>
+<section id="počítání-s-vektory" class="slide level2">
+<h2>Počítání s vektory</h2>
+<p>S vektory jde normálně počítat a vlastně dělat skoro cokoli.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">10</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10 20 30</code></pre>
+</div>
+</div>
+<p><br>
+</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 4 9</code></pre>
+</div>
+</div>
+<p><br>
+</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">40</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">10</span>))</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  5  4  7  4  4  5  2  2  3  2  6  2  4  7  3  7  4 10  3  3  9  5  7  8  6
+[26]  1  7 10  8  6  5  6  3  4  1  2  3  5  1  8</code></pre>
+</div>
+</div>
+<p><br>
+</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="fu">paste</span>(</span>
+<span id="cb51-2"><a href="#cb51-2"></a>  <span class="fu">c</span>(<span class="st">"první vektor, první řetězec"</span>, <span class="st">"první vektor, druhý řetězec"</span>), </span>
+<span id="cb51-3"><a href="#cb51-3"></a>  <span class="fu">c</span>(<span class="st">"druhý vektor, první řetězec"</span>, <span class="st">"druhý vektor, druhý řetězec"</span>),</span>
+<span id="cb51-4"><a href="#cb51-4"></a>  <span class="at">sep =</span> <span class="st">" - "</span></span>
+<span id="cb51-5"><a href="#cb51-5"></a>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "první vektor, první řetězec - druhý vektor, první řetězec"
+[2] "první vektor, druhý řetězec - druhý vektor, druhý řetězec"</code></pre>
+</div>
+</div>
+</section>
+<section id="nápověda-k-funkcím" class="slide level2">
+<h2>Nápověda k funkcím</h2>
+<p>R má integrovanou nápovědu ke všem funkcím. Vyvoláte ji:</p>
+<ul>
+<li>Klávesou <code>F1</code> na názvu funkce v konzoli, skriptu, nebo bloku kódu v R Markdownu.</li>
+<li>Otazníkem a názvek funkce.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>?rnorm</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Nápověda se v RStudiu zobrazí na panelu <em>Help</em>.</p>
+</section>
+<section id="pipes-vnořování-vs.-řetězení-funkcí" class="slide level2">
+<h2>Pipes – vnořování vs.&nbsp;řetězení funkcí</h2>
+<p><br>
+V předešlém příkladu jste viděli:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">40</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">10</span>))</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  9  2 10  5  6  8  8  9  7  3  4  9  9  5  4  8  3 10  3  2 10  3  7  2  9
+[26]  4  5  6  7  4  5  2  5  8  6  4  8  5  7  6</code></pre>
+</div>
+</div>
+<p><br>
+V R budete používat fakt hodně funkcí a vnořování by bylo brzy nepřehledné. Proto existuje operátor <em>pipe</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">40</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb56-2"><a href="#cb56-2"></a>  <span class="fu">round</span>()</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  7  3  2  5  6  5  8  1  6  3  4  8  9  5  4  9  5  3  9  7  6  6  3  2  6
+[26]  1  6  8  4  7  1  2  3  7 10  4  4  7  8  4</code></pre>
+</div>
+</div>
+<p><br>
+</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">40</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb58-2"><a href="#cb58-2"></a>  <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">1</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 3.1 9.6 7.9 4.4 6.9 6.0 4.4 1.8 4.7 5.9 4.7 4.3 7.4 6.7 6.8 1.6 6.0 1.2 8.3
+[20] 9.4 2.0 4.3 4.3 4.3 9.6 7.4 7.2 8.4 7.2 8.7 1.8 2.5 6.8 2.3 3.3 8.5 3.8 3.6
+[39] 3.3 9.4</code></pre>
+</div>
+</div>
+</section>
+<section id="porovnání-pipes-a-vnořování" class="slide level2">
+<h2>Porovnání pipes a vnořování</h2>
+<h3 id="pipes">Pipes</h3>
+<div class="sourceCode" id="cb60"><pre class="sourceCode numberSource {{r}} number-lines code-with-copy"><code class="sourceCode"><span id="cb60-1"><a href="#cb60-1"></a>objekt |&gt; </span>
+<span id="cb60-2"><a href="#cb60-2"></a>  prvni_funkce(druhy_parametr_prvni_funkce, treti_parametr_prvni_funkce) |&gt; </span>
+<span id="cb60-3"><a href="#cb60-3"></a>  druha_funkce(druhy_parametr_druhe_funkce) |&gt; </span>
+<span id="cb60-4"><a href="#cb60-4"></a>  treti_funkce(druhy_parametr_treti_funkce) |&gt; </span>
+<span id="cb60-5"><a href="#cb60-5"></a>  ctvrta_funkce() |&gt; </span>
+<span id="cb60-6"><a href="#cb60-6"></a>  pata_funkce(druhy_parametr_pate_funkce)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 id="vnořování">Vnořování</h3>
+<div class="sourceCode" id="cb61"><pre class="sourceCode numberSource {{r}} number-lines code-with-copy"><code class="sourceCode"><span id="cb61-1"><a href="#cb61-1"></a>pata_funkce(</span>
+<span id="cb61-2"><a href="#cb61-2"></a>  ctvrta_funkce(</span>
+<span id="cb61-3"><a href="#cb61-3"></a>    treti_funkce(</span>
+<span id="cb61-4"><a href="#cb61-4"></a>      druha_funkce(</span>
+<span id="cb61-5"><a href="#cb61-5"></a>        prvni_funkce(</span>
+<span id="cb61-6"><a href="#cb61-6"></a>          objekt, druhy_parametr_prvni_funkce, treti_parametr_prvni_funkce</span>
+<span id="cb61-7"><a href="#cb61-7"></a>        ), druhy_parametr_druhe_funkce</span>
+<span id="cb61-8"><a href="#cb61-8"></a>      ), druhy_parametr_treti_funkce</span>
+<span id="cb61-9"><a href="#cb61-9"></a>    )</span>
+<span id="cb61-10"><a href="#cb61-10"></a>  ), druhy_parametr_pate funkce</span>
+<span id="cb61-11"><a href="#cb61-11"></a>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br>
+</p>
+<p>Ve starších příkladech najdete pipe, která vypadá takhle <code>%&gt;%</code>. Je to plusmínus totéž.</p>
+</section>
+<section id="objekty" class="slide level2">
+<h2>Objekty</h2>
+<p>Výsledky jakýkoli operací (neboli <em>výrazů</em>) můžete ukládat do pojmenovaných objektů. V jiných programovacích jazycích se jim většinou říká proměnné. Jména objektů pak jde používat namísto konkrétních hodnot či výrazů.</p>
+<p><br>
+</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>muj_objekt <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">10</span>)</span>
+<span id="cb62-2"><a href="#cb62-2"></a></span>
+<span id="cb62-3"><a href="#cb62-3"></a>muj_objekt <span class="sc">|&gt;</span> </span>
+<span id="cb62-4"><a href="#cb62-4"></a>  <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">1</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 3.2 9.5 7.8 8.1 1.1 2.9 4.8 2.7 4.4 1.0 2.9 2.4 7.3 5.4 8.9 3.8 8.9 9.0 9.6
+[20] 7.6</code></pre>
+</div>
+</div>
+<p><br>
+</p>
+<ul>
+<li>Jména objektů se mohou skládat jen z písmen anglické abecedy, podtržítek a teček.</li>
+<li>Ukládají se do tzv. prostředí (<em>environment</em>).</li>
+<li>Po ukončení R (resp. RStudia) nebo po restartu session zmizí.</li>
+</ul>
+</section>
+<section id="klávesové-zkratky" class="slide level2 smaller">
+<h2>Klávesové zkratky</h2>
+<table>
+<colgroup>
+<col style="width: 40%">
+<col style="width: 27%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Akce</strong></th>
+<th><strong>Windows &amp; Linux</strong></th>
+<th><strong>Mac</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Vlož blok kódu (chunk)</td>
+<td><code>Ctrl</code>+<code>Alt</code>+<code>I</code></td>
+<td><code>Command</code>+<code>Option</code>+<code>I</code></td>
+</tr>
+<tr class="even">
+<td>Vlož přiřazení (znaky &lt;-)</td>
+<td><code>Alt</code>+<code>-</code></td>
+<td><code>Option</code>+<code>-</code></td>
+</tr>
+<tr class="odd">
+<td>Proveď řádek kódu s kurzorem</td>
+<td><code>Ctrl</code>+<code>Enter</code></td>
+<td><code>Command</code>+<code>Enter</code></td>
+</tr>
+<tr class="even">
+<td>Proveď blok kódu s kurzorem</td>
+<td><code>Ctrl</code>+<code>Shift</code>+<code>Enter</code></td>
+<td><code>Command</code>+<code>Shift</code>+<code>Enter</code></td>
+</tr>
+<tr class="odd">
+<td>Proveď všechny bloky v souboru</td>
+<td><code>Ctrl</code>+<code>Alt</code>+<code>R</code></td>
+<td><code>Command</code>+<code>Option</code>+<code>R</code></td>
+</tr>
+<tr class="even">
+<td>Proveď všechny bloky nad kurzorem</td>
+<td><code>Ctrl</code>+<code>Alt</code>+<code>P</code></td>
+<td><code>Command</code>+<code>Option</code>+<code>P</code></td>
+</tr>
+<tr class="odd">
+<td>Zobraz celý dokument v HTML</td>
+<td><code>Ctrl</code>+<code>Shift</code>+<code>K</code></td>
+<td><code>Command</code>+<code>Shift</code>+<code>K</code></td>
+</tr>
+<tr class="even">
+<td>Jdi na další blok nebo titulek</td>
+<td><code>Ctrl</code>+<code>PgDown</code></td>
+<td><code>Command</code>+<code>PgDown</code></td>
+</tr>
+<tr class="odd">
+<td>Jdi na předchozí blok nebo titulek</td>
+<td><code>Ctrl</code>+<code>PgUp</code></td>
+<td><code>Command</code>+<code>PgUp</code></td>
+</tr>
+<tr class="even">
+<td>Nápověda k funkci s kurzorem</td>
+<td><code>F1</code></td>
+<td><code>F1</code></td>
+</tr>
+</tbody>
+</table>
+<p>Pokud si je nechcete pamatovat, všechny mají i&nbsp;své tlačítko buď na toolbaru nad editorem, nebo přímo v&nbsp;pravém horním rohu každého bloku kódu. Funkce tlačítek se vám zobrazí po najetí myši.</p>
+</section></section>
+<section>
+<section id="práce-s-daty" class="title-slide slide level1 center">
+<h1>Práce s daty</h1>
+
+</section>
+<section id="tidyverse" class="slide level2">
+<h2>Tidyverse</h2>
+<p>Pro práci s daty jsou vhodné balíčky</p>
+<ul>
+<li><strong>tibble</strong> – definuje „hezčí” data frame</li>
+<li><strong>reader</strong> – importuje dat z textových souborů</li>
+<li><strong>tidyr</strong> – pomáhá s čištěním dat</li>
+<li><strong>dplyr</strong> – umí všechny důležité datové transformace</li>
+<li><strong>stringr</strong> – obsahuje funkce pro práci s řetězci</li>
+</ul>
+<p>Všechny tyto balíčky a pár dalších jsou součástí „nadbalíčku” <strong>tidyverse</strong>, takže je jde načíst jedním příkazem:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="manipulace-s-daty-pomocí-dplyr" class="slide level2">
+<h2>Manipulace s daty pomocí <em>dplyr</em></h2>
+<p>Pro začátek ukážu, jak pomocí balíčku <em>dplyr</em> můžete:</p>
+<ul>
+<li>vybírat sloupce</li>
+<li>vybírat (filtrovat) řádky</li>
+<li>řadit (třídit) řádky</li>
+<li>odvozovat nové sloupce</li>
+<li>seskupovat a agregovat řádky</li>
+<li>spojovat víc tabulek</li>
+</ul>
+</section>
+<section id="vzorový-data-frame" class="slide level2">
+<h2>Vzorový data frame</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>starwars</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["height"],"name":[2],"type":["int"],"align":["right"]},{"label":["mass"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hair_color"],"name":[4],"type":["chr"],"align":["left"]},{"label":["skin_color"],"name":[5],"type":["chr"],"align":["left"]},{"label":["eye_color"],"name":[6],"type":["chr"],"align":["left"]},{"label":["birth_year"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["sex"],"name":[8],"type":["chr"],"align":["left"]},{"label":["gender"],"name":[9],"type":["chr"],"align":["left"]},{"label":["homeworld"],"name":[10],"type":["chr"],"align":["left"]},{"label":["species"],"name":[11],"type":["chr"],"align":["left"]},{"label":["films"],"name":[12],"type":["list"],"align":["right"]},{"label":["vehicles"],"name":[13],"type":["list"],"align":["right"]},{"label":["starships"],"name":[14],"type":["list"],"align":["right"]}],"data":[{"1":"Luke Skywalker","2":"172","3":"77.0","4":"blond","5":"fair","6":"blue","7":"19.0","8":"male","9":"masculine","10":"Tatooine","11":"Human","12":"<chr [5]>","13":"<chr [2]>","14":"<chr [2]>"},{"1":"C-3PO","2":"167","3":"75.0","4":"NA","5":"gold","6":"yellow","7":"112.0","8":"none","9":"masculine","10":"Tatooine","11":"Droid","12":"<chr [6]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"R2-D2","2":"96","3":"32.0","4":"NA","5":"white, blue","6":"red","7":"33.0","8":"none","9":"masculine","10":"Naboo","11":"Droid","12":"<chr [7]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Darth Vader","2":"202","3":"136.0","4":"none","5":"white","6":"yellow","7":"41.9","8":"male","9":"masculine","10":"Tatooine","11":"Human","12":"<chr [4]>","13":"<chr [0]>","14":"<chr [1]>"},{"1":"Leia Organa","2":"150","3":"49.0","4":"brown","5":"light","6":"brown","7":"19.0","8":"female","9":"feminine","10":"Alderaan","11":"Human","12":"<chr [5]>","13":"<chr [1]>","14":"<chr [0]>"},{"1":"Owen Lars","2":"178","3":"120.0","4":"brown, grey","5":"light","6":"blue","7":"52.0","8":"male","9":"masculine","10":"Tatooine","11":"Human","12":"<chr [3]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Beru Whitesun lars","2":"165","3":"75.0","4":"brown","5":"light","6":"blue","7":"47.0","8":"female","9":"feminine","10":"Tatooine","11":"Human","12":"<chr [3]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"R5-D4","2":"97","3":"32.0","4":"NA","5":"white, red","6":"red","7":"NA","8":"none","9":"masculine","10":"Tatooine","11":"Droid","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Biggs Darklighter","2":"183","3":"84.0","4":"black","5":"light","6":"brown","7":"24.0","8":"male","9":"masculine","10":"Tatooine","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [1]>"},{"1":"Obi-Wan Kenobi","2":"182","3":"77.0","4":"auburn, white","5":"fair","6":"blue-gray","7":"57.0","8":"male","9":"masculine","10":"Stewjon","11":"Human","12":"<chr [6]>","13":"<chr [1]>","14":"<chr [5]>"},{"1":"Anakin Skywalker","2":"188","3":"84.0","4":"blond","5":"fair","6":"blue","7":"41.9","8":"male","9":"masculine","10":"Tatooine","11":"Human","12":"<chr [3]>","13":"<chr [2]>","14":"<chr [3]>"},{"1":"Wilhuff Tarkin","2":"180","3":"NA","4":"auburn, grey","5":"fair","6":"blue","7":"64.0","8":"male","9":"masculine","10":"Eriadu","11":"Human","12":"<chr [2]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Chewbacca","2":"228","3":"112.0","4":"brown","5":"unknown","6":"blue","7":"200.0","8":"male","9":"masculine","10":"Kashyyyk","11":"Wookiee","12":"<chr [5]>","13":"<chr [1]>","14":"<chr [2]>"},{"1":"Han Solo","2":"180","3":"80.0","4":"brown","5":"fair","6":"brown","7":"29.0","8":"male","9":"masculine","10":"Corellia","11":"Human","12":"<chr [4]>","13":"<chr [0]>","14":"<chr [2]>"},{"1":"Greedo","2":"173","3":"74.0","4":"NA","5":"green","6":"black","7":"44.0","8":"male","9":"masculine","10":"Rodia","11":"Rodian","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Jabba Desilijic Tiure","2":"175","3":"1358.0","4":"NA","5":"green-tan, brown","6":"orange","7":"600.0","8":"hermaphroditic","9":"masculine","10":"Nal Hutta","11":"Hutt","12":"<chr [3]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Wedge Antilles","2":"170","3":"77.0","4":"brown","5":"fair","6":"hazel","7":"21.0","8":"male","9":"masculine","10":"Corellia","11":"Human","12":"<chr [3]>","13":"<chr [1]>","14":"<chr [1]>"},{"1":"Jek Tono Porkins","2":"180","3":"110.0","4":"brown","5":"fair","6":"blue","7":"NA","8":"male","9":"masculine","10":"Bestine IV","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [1]>"},{"1":"Yoda","2":"66","3":"17.0","4":"white","5":"green","6":"brown","7":"896.0","8":"male","9":"masculine","10":"NA","11":"Yoda's species","12":"<chr [5]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Palpatine","2":"170","3":"75.0","4":"grey","5":"pale","6":"yellow","7":"82.0","8":"male","9":"masculine","10":"Naboo","11":"Human","12":"<chr [5]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Boba Fett","2":"183","3":"78.2","4":"black","5":"fair","6":"brown","7":"31.5","8":"male","9":"masculine","10":"Kamino","11":"Human","12":"<chr [3]>","13":"<chr [0]>","14":"<chr [1]>"},{"1":"IG-88","2":"200","3":"140.0","4":"none","5":"metal","6":"red","7":"15.0","8":"none","9":"masculine","10":"NA","11":"Droid","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Bossk","2":"190","3":"113.0","4":"none","5":"green","6":"red","7":"53.0","8":"male","9":"masculine","10":"Trandosha","11":"Trandoshan","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Lando Calrissian","2":"177","3":"79.0","4":"black","5":"dark","6":"brown","7":"31.0","8":"male","9":"masculine","10":"Socorro","11":"Human","12":"<chr [2]>","13":"<chr [0]>","14":"<chr [1]>"},{"1":"Lobot","2":"175","3":"79.0","4":"none","5":"light","6":"blue","7":"37.0","8":"male","9":"masculine","10":"Bespin","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Ackbar","2":"180","3":"83.0","4":"none","5":"brown mottle","6":"orange","7":"41.0","8":"male","9":"masculine","10":"Mon Cala","11":"Mon Calamari","12":"<chr [2]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Mon Mothma","2":"150","3":"NA","4":"auburn","5":"fair","6":"blue","7":"48.0","8":"female","9":"feminine","10":"Chandrila","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Arvel Crynyd","2":"NA","3":"NA","4":"brown","5":"fair","6":"brown","7":"NA","8":"male","9":"masculine","10":"NA","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [1]>"},{"1":"Wicket Systri Warrick","2":"88","3":"20.0","4":"brown","5":"brown","6":"brown","7":"8.0","8":"male","9":"masculine","10":"Endor","11":"Ewok","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Nien Nunb","2":"160","3":"68.0","4":"none","5":"grey","6":"black","7":"NA","8":"male","9":"masculine","10":"Sullust","11":"Sullustan","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [1]>"},{"1":"Qui-Gon Jinn","2":"193","3":"89.0","4":"brown","5":"fair","6":"blue","7":"92.0","8":"male","9":"masculine","10":"NA","11":"Human","12":"<chr [1]>","13":"<chr [1]>","14":"<chr [0]>"},{"1":"Nute Gunray","2":"191","3":"90.0","4":"none","5":"mottled green","6":"red","7":"NA","8":"male","9":"masculine","10":"Cato Neimoidia","11":"Neimodian","12":"<chr [3]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Finis Valorum","2":"170","3":"NA","4":"blond","5":"fair","6":"blue","7":"91.0","8":"male","9":"masculine","10":"Coruscant","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Jar Jar Binks","2":"196","3":"66.0","4":"none","5":"orange","6":"orange","7":"52.0","8":"male","9":"masculine","10":"Naboo","11":"Gungan","12":"<chr [2]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Roos Tarpals","2":"224","3":"82.0","4":"none","5":"grey","6":"orange","7":"NA","8":"male","9":"masculine","10":"Naboo","11":"Gungan","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Rugor Nass","2":"206","3":"NA","4":"none","5":"green","6":"orange","7":"NA","8":"male","9":"masculine","10":"Naboo","11":"Gungan","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Ric Olié","2":"183","3":"NA","4":"brown","5":"fair","6":"blue","7":"NA","8":"NA","9":"NA","10":"Naboo","11":"NA","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [1]>"},{"1":"Watto","2":"137","3":"NA","4":"black","5":"blue, grey","6":"yellow","7":"NA","8":"male","9":"masculine","10":"Toydaria","11":"Toydarian","12":"<chr [2]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Sebulba","2":"112","3":"40.0","4":"none","5":"grey, red","6":"orange","7":"NA","8":"male","9":"masculine","10":"Malastare","11":"Dug","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Quarsh Panaka","2":"183","3":"NA","4":"black","5":"dark","6":"brown","7":"62.0","8":"NA","9":"NA","10":"Naboo","11":"NA","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Shmi Skywalker","2":"163","3":"NA","4":"black","5":"fair","6":"brown","7":"72.0","8":"female","9":"feminine","10":"Tatooine","11":"Human","12":"<chr [2]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Darth Maul","2":"175","3":"80.0","4":"none","5":"red","6":"yellow","7":"54.0","8":"male","9":"masculine","10":"Dathomir","11":"Zabrak","12":"<chr [1]>","13":"<chr [1]>","14":"<chr [1]>"},{"1":"Bib Fortuna","2":"180","3":"NA","4":"none","5":"pale","6":"pink","7":"NA","8":"male","9":"masculine","10":"Ryloth","11":"Twi'lek","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Ayla Secura","2":"178","3":"55.0","4":"none","5":"blue","6":"hazel","7":"48.0","8":"female","9":"feminine","10":"Ryloth","11":"Twi'lek","12":"<chr [3]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Dud Bolt","2":"94","3":"45.0","4":"none","5":"blue, grey","6":"yellow","7":"NA","8":"male","9":"masculine","10":"Vulpter","11":"Vulptereen","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Gasgano","2":"122","3":"NA","4":"none","5":"white, blue","6":"black","7":"NA","8":"male","9":"masculine","10":"Troiken","11":"Xexto","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Ben Quadinaros","2":"163","3":"65.0","4":"none","5":"grey, green, yellow","6":"orange","7":"NA","8":"male","9":"masculine","10":"Tund","11":"Toong","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Mace Windu","2":"188","3":"84.0","4":"none","5":"dark","6":"brown","7":"72.0","8":"male","9":"masculine","10":"Haruun Kal","11":"Human","12":"<chr [3]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Ki-Adi-Mundi","2":"198","3":"82.0","4":"white","5":"pale","6":"yellow","7":"92.0","8":"male","9":"masculine","10":"Cerea","11":"Cerean","12":"<chr [3]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Kit Fisto","2":"196","3":"87.0","4":"none","5":"green","6":"black","7":"NA","8":"male","9":"masculine","10":"Glee Anselm","11":"Nautolan","12":"<chr [3]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Eeth Koth","2":"171","3":"NA","4":"black","5":"brown","6":"brown","7":"NA","8":"male","9":"masculine","10":"Iridonia","11":"Zabrak","12":"<chr [2]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Adi Gallia","2":"184","3":"50.0","4":"none","5":"dark","6":"blue","7":"NA","8":"female","9":"feminine","10":"Coruscant","11":"Tholothian","12":"<chr [2]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Saesee Tiin","2":"188","3":"NA","4":"none","5":"pale","6":"orange","7":"NA","8":"male","9":"masculine","10":"Iktotch","11":"Iktotchi","12":"<chr [2]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Yarael Poof","2":"264","3":"NA","4":"none","5":"white","6":"yellow","7":"NA","8":"male","9":"masculine","10":"Quermia","11":"Quermian","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Plo Koon","2":"188","3":"80.0","4":"none","5":"orange","6":"black","7":"22.0","8":"male","9":"masculine","10":"Dorin","11":"Kel Dor","12":"<chr [3]>","13":"<chr [0]>","14":"<chr [1]>"},{"1":"Mas Amedda","2":"196","3":"NA","4":"none","5":"blue","6":"blue","7":"NA","8":"male","9":"masculine","10":"Champala","11":"Chagrian","12":"<chr [2]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Gregar Typho","2":"185","3":"85.0","4":"black","5":"dark","6":"brown","7":"NA","8":"male","9":"masculine","10":"Naboo","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [1]>"},{"1":"Cordé","2":"157","3":"NA","4":"brown","5":"light","6":"brown","7":"NA","8":"female","9":"feminine","10":"Naboo","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Cliegg Lars","2":"183","3":"NA","4":"brown","5":"fair","6":"blue","7":"82.0","8":"male","9":"masculine","10":"Tatooine","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Poggle the Lesser","2":"183","3":"80.0","4":"none","5":"green","6":"yellow","7":"NA","8":"male","9":"masculine","10":"Geonosis","11":"Geonosian","12":"<chr [2]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Luminara Unduli","2":"170","3":"56.2","4":"black","5":"yellow","6":"blue","7":"58.0","8":"female","9":"feminine","10":"Mirial","11":"Mirialan","12":"<chr [2]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Barriss Offee","2":"166","3":"50.0","4":"black","5":"yellow","6":"blue","7":"40.0","8":"female","9":"feminine","10":"Mirial","11":"Mirialan","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Dormé","2":"165","3":"NA","4":"brown","5":"light","6":"brown","7":"NA","8":"female","9":"feminine","10":"Naboo","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Dooku","2":"193","3":"80.0","4":"white","5":"fair","6":"brown","7":"102.0","8":"male","9":"masculine","10":"Serenno","11":"Human","12":"<chr [2]>","13":"<chr [1]>","14":"<chr [0]>"},{"1":"Bail Prestor Organa","2":"191","3":"NA","4":"black","5":"tan","6":"brown","7":"67.0","8":"male","9":"masculine","10":"Alderaan","11":"Human","12":"<chr [2]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Jango Fett","2":"183","3":"79.0","4":"black","5":"tan","6":"brown","7":"66.0","8":"male","9":"masculine","10":"Concord Dawn","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Zam Wesell","2":"168","3":"55.0","4":"blonde","5":"fair, green, yellow","6":"yellow","7":"NA","8":"female","9":"feminine","10":"Zolan","11":"Clawdite","12":"<chr [1]>","13":"<chr [1]>","14":"<chr [0]>"},{"1":"Dexter Jettster","2":"198","3":"102.0","4":"none","5":"brown","6":"yellow","7":"NA","8":"male","9":"masculine","10":"Ojom","11":"Besalisk","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Lama Su","2":"229","3":"88.0","4":"none","5":"grey","6":"black","7":"NA","8":"male","9":"masculine","10":"Kamino","11":"Kaminoan","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Taun We","2":"213","3":"NA","4":"none","5":"grey","6":"black","7":"NA","8":"female","9":"feminine","10":"Kamino","11":"Kaminoan","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Jocasta Nu","2":"167","3":"NA","4":"white","5":"fair","6":"blue","7":"NA","8":"female","9":"feminine","10":"Coruscant","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Ratts Tyerell","2":"79","3":"15.0","4":"none","5":"grey, blue","6":"unknown","7":"NA","8":"male","9":"masculine","10":"Aleen Minor","11":"Aleena","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"R4-P17","2":"96","3":"NA","4":"none","5":"silver, red","6":"red, blue","7":"NA","8":"none","9":"feminine","10":"NA","11":"Droid","12":"<chr [2]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Wat Tambor","2":"193","3":"48.0","4":"none","5":"green, grey","6":"unknown","7":"NA","8":"male","9":"masculine","10":"Skako","11":"Skakoan","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"San Hill","2":"191","3":"NA","4":"none","5":"grey","6":"gold","7":"NA","8":"male","9":"masculine","10":"Muunilinst","11":"Muun","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Shaak Ti","2":"178","3":"57.0","4":"none","5":"red, blue, white","6":"black","7":"NA","8":"female","9":"feminine","10":"Shili","11":"Togruta","12":"<chr [2]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Grievous","2":"216","3":"159.0","4":"none","5":"brown, white","6":"green, yellow","7":"NA","8":"male","9":"masculine","10":"Kalee","11":"Kaleesh","12":"<chr [1]>","13":"<chr [1]>","14":"<chr [1]>"},{"1":"Tarfful","2":"234","3":"136.0","4":"brown","5":"brown","6":"blue","7":"NA","8":"male","9":"masculine","10":"Kashyyyk","11":"Wookiee","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Raymus Antilles","2":"188","3":"79.0","4":"brown","5":"light","6":"brown","7":"NA","8":"male","9":"masculine","10":"Alderaan","11":"Human","12":"<chr [2]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Sly Moore","2":"178","3":"48.0","4":"none","5":"pale","6":"white","7":"NA","8":"NA","9":"NA","10":"Umbara","11":"NA","12":"<chr [2]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Tion Medon","2":"206","3":"80.0","4":"none","5":"grey","6":"black","7":"NA","8":"male","9":"masculine","10":"Utapau","11":"Pau'an","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Finn","2":"NA","3":"NA","4":"black","5":"dark","6":"dark","7":"NA","8":"male","9":"masculine","10":"NA","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Rey","2":"NA","3":"NA","4":"brown","5":"light","6":"hazel","7":"NA","8":"female","9":"feminine","10":"NA","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Poe Dameron","2":"NA","3":"NA","4":"brown","5":"light","6":"brown","7":"NA","8":"male","9":"masculine","10":"NA","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [1]>"},{"1":"BB8","2":"NA","3":"NA","4":"none","5":"none","6":"black","7":"NA","8":"none","9":"masculine","10":"NA","11":"Droid","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Captain Phasma","2":"NA","3":"NA","4":"unknown","5":"unknown","6":"unknown","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Padmé Amidala","2":"165","3":"45.0","4":"brown","5":"light","6":"brown","7":"46.0","8":"female","9":"feminine","10":"Naboo","11":"Human","12":"<chr [3]>","13":"<chr [0]>","14":"<chr [3]>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="průzkum-funkcí-glimpse" class="slide level2">
+<h2>Průzkum funkcí <code>glimpse</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a>starwars <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 87
+Columns: 14
+$ name       &lt;chr&gt; "Luke Skywalker", "C-3PO", "R2-D2", "Darth Vader", "Leia Or…
+$ height     &lt;int&gt; 172, 167, 96, 202, 150, 178, 165, 97, 183, 182, 188, 180, 2…
+$ mass       &lt;dbl&gt; 77.0, 75.0, 32.0, 136.0, 49.0, 120.0, 75.0, 32.0, 84.0, 77.…
+$ hair_color &lt;chr&gt; "blond", NA, NA, "none", "brown", "brown, grey", "brown", N…
+$ skin_color &lt;chr&gt; "fair", "gold", "white, blue", "white", "light", "light", "…
+$ eye_color  &lt;chr&gt; "blue", "yellow", "red", "yellow", "brown", "blue", "blue",…
+$ birth_year &lt;dbl&gt; 19.0, 112.0, 33.0, 41.9, 19.0, 52.0, 47.0, NA, 24.0, 57.0, …
+$ sex        &lt;chr&gt; "male", "none", "none", "male", "female", "male", "female",…
+$ gender     &lt;chr&gt; "masculine", "masculine", "masculine", "masculine", "femini…
+$ homeworld  &lt;chr&gt; "Tatooine", "Tatooine", "Naboo", "Tatooine", "Alderaan", "T…
+$ species    &lt;chr&gt; "Human", "Droid", "Droid", "Human", "Human", "Human", "Huma…
+$ films      &lt;list&gt; &lt;"The Empire Strikes Back", "Revenge of the Sith", "Return…
+$ vehicles   &lt;list&gt; &lt;"Snowspeeder", "Imperial Speeder Bike"&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, "Imp…
+$ starships  &lt;list&gt; &lt;"X-wing", "Imperial shuttle"&gt;, &lt;&gt;, &lt;&gt;, "TIE Advanced x1",…</code></pre>
+</div>
+</div>
+<p><br>
+</p>
+<p>V RStudiu můžete data frame zobrazit i funkcí <code>View</code>. Zkuste si to.</p>
+</section>
+<section id="výběr-sloupců" class="slide level2">
+<h2>Výběr sloupců</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb68-2"><a href="#cb68-2"></a>  <span class="fu">select</span>(name, sex, homeworld, hair_color)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["homeworld"],"name":[3],"type":["chr"],"align":["left"]},{"label":["hair_color"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"Luke Skywalker","2":"male","3":"Tatooine","4":"blond"},{"1":"C-3PO","2":"none","3":"Tatooine","4":"NA"},{"1":"R2-D2","2":"none","3":"Naboo","4":"NA"},{"1":"Darth Vader","2":"male","3":"Tatooine","4":"none"},{"1":"Leia Organa","2":"female","3":"Alderaan","4":"brown"},{"1":"Owen Lars","2":"male","3":"Tatooine","4":"brown, grey"},{"1":"Beru Whitesun lars","2":"female","3":"Tatooine","4":"brown"},{"1":"R5-D4","2":"none","3":"Tatooine","4":"NA"},{"1":"Biggs Darklighter","2":"male","3":"Tatooine","4":"black"},{"1":"Obi-Wan Kenobi","2":"male","3":"Stewjon","4":"auburn, white"},{"1":"Anakin Skywalker","2":"male","3":"Tatooine","4":"blond"},{"1":"Wilhuff Tarkin","2":"male","3":"Eriadu","4":"auburn, grey"},{"1":"Chewbacca","2":"male","3":"Kashyyyk","4":"brown"},{"1":"Han Solo","2":"male","3":"Corellia","4":"brown"},{"1":"Greedo","2":"male","3":"Rodia","4":"NA"},{"1":"Jabba Desilijic Tiure","2":"hermaphroditic","3":"Nal Hutta","4":"NA"},{"1":"Wedge Antilles","2":"male","3":"Corellia","4":"brown"},{"1":"Jek Tono Porkins","2":"male","3":"Bestine IV","4":"brown"},{"1":"Yoda","2":"male","3":"NA","4":"white"},{"1":"Palpatine","2":"male","3":"Naboo","4":"grey"},{"1":"Boba Fett","2":"male","3":"Kamino","4":"black"},{"1":"IG-88","2":"none","3":"NA","4":"none"},{"1":"Bossk","2":"male","3":"Trandosha","4":"none"},{"1":"Lando Calrissian","2":"male","3":"Socorro","4":"black"},{"1":"Lobot","2":"male","3":"Bespin","4":"none"},{"1":"Ackbar","2":"male","3":"Mon Cala","4":"none"},{"1":"Mon Mothma","2":"female","3":"Chandrila","4":"auburn"},{"1":"Arvel Crynyd","2":"male","3":"NA","4":"brown"},{"1":"Wicket Systri Warrick","2":"male","3":"Endor","4":"brown"},{"1":"Nien Nunb","2":"male","3":"Sullust","4":"none"},{"1":"Qui-Gon Jinn","2":"male","3":"NA","4":"brown"},{"1":"Nute Gunray","2":"male","3":"Cato Neimoidia","4":"none"},{"1":"Finis Valorum","2":"male","3":"Coruscant","4":"blond"},{"1":"Jar Jar Binks","2":"male","3":"Naboo","4":"none"},{"1":"Roos Tarpals","2":"male","3":"Naboo","4":"none"},{"1":"Rugor Nass","2":"male","3":"Naboo","4":"none"},{"1":"Ric Olié","2":"NA","3":"Naboo","4":"brown"},{"1":"Watto","2":"male","3":"Toydaria","4":"black"},{"1":"Sebulba","2":"male","3":"Malastare","4":"none"},{"1":"Quarsh Panaka","2":"NA","3":"Naboo","4":"black"},{"1":"Shmi Skywalker","2":"female","3":"Tatooine","4":"black"},{"1":"Darth Maul","2":"male","3":"Dathomir","4":"none"},{"1":"Bib Fortuna","2":"male","3":"Ryloth","4":"none"},{"1":"Ayla Secura","2":"female","3":"Ryloth","4":"none"},{"1":"Dud Bolt","2":"male","3":"Vulpter","4":"none"},{"1":"Gasgano","2":"male","3":"Troiken","4":"none"},{"1":"Ben Quadinaros","2":"male","3":"Tund","4":"none"},{"1":"Mace Windu","2":"male","3":"Haruun Kal","4":"none"},{"1":"Ki-Adi-Mundi","2":"male","3":"Cerea","4":"white"},{"1":"Kit Fisto","2":"male","3":"Glee Anselm","4":"none"},{"1":"Eeth Koth","2":"male","3":"Iridonia","4":"black"},{"1":"Adi Gallia","2":"female","3":"Coruscant","4":"none"},{"1":"Saesee Tiin","2":"male","3":"Iktotch","4":"none"},{"1":"Yarael Poof","2":"male","3":"Quermia","4":"none"},{"1":"Plo Koon","2":"male","3":"Dorin","4":"none"},{"1":"Mas Amedda","2":"male","3":"Champala","4":"none"},{"1":"Gregar Typho","2":"male","3":"Naboo","4":"black"},{"1":"Cordé","2":"female","3":"Naboo","4":"brown"},{"1":"Cliegg Lars","2":"male","3":"Tatooine","4":"brown"},{"1":"Poggle the Lesser","2":"male","3":"Geonosis","4":"none"},{"1":"Luminara Unduli","2":"female","3":"Mirial","4":"black"},{"1":"Barriss Offee","2":"female","3":"Mirial","4":"black"},{"1":"Dormé","2":"female","3":"Naboo","4":"brown"},{"1":"Dooku","2":"male","3":"Serenno","4":"white"},{"1":"Bail Prestor Organa","2":"male","3":"Alderaan","4":"black"},{"1":"Jango Fett","2":"male","3":"Concord Dawn","4":"black"},{"1":"Zam Wesell","2":"female","3":"Zolan","4":"blonde"},{"1":"Dexter Jettster","2":"male","3":"Ojom","4":"none"},{"1":"Lama Su","2":"male","3":"Kamino","4":"none"},{"1":"Taun We","2":"female","3":"Kamino","4":"none"},{"1":"Jocasta Nu","2":"female","3":"Coruscant","4":"white"},{"1":"Ratts Tyerell","2":"male","3":"Aleen Minor","4":"none"},{"1":"R4-P17","2":"none","3":"NA","4":"none"},{"1":"Wat Tambor","2":"male","3":"Skako","4":"none"},{"1":"San Hill","2":"male","3":"Muunilinst","4":"none"},{"1":"Shaak Ti","2":"female","3":"Shili","4":"none"},{"1":"Grievous","2":"male","3":"Kalee","4":"none"},{"1":"Tarfful","2":"male","3":"Kashyyyk","4":"brown"},{"1":"Raymus Antilles","2":"male","3":"Alderaan","4":"brown"},{"1":"Sly Moore","2":"NA","3":"Umbara","4":"none"},{"1":"Tion Medon","2":"male","3":"Utapau","4":"none"},{"1":"Finn","2":"male","3":"NA","4":"black"},{"1":"Rey","2":"female","3":"NA","4":"brown"},{"1":"Poe Dameron","2":"male","3":"NA","4":"brown"},{"1":"BB8","2":"none","3":"NA","4":"none"},{"1":"Captain Phasma","2":"NA","3":"NA","4":"unknown"},{"1":"Padmé Amidala","2":"female","3":"Naboo","4":"brown"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="filtrování-řádků" class="slide level2">
+<h2>Filtrování řádků</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb69-2"><a href="#cb69-2"></a>  <span class="fu">filter</span>(hair_color <span class="sc">==</span> <span class="st">"blond"</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["height"],"name":[2],"type":["int"],"align":["right"]},{"label":["mass"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hair_color"],"name":[4],"type":["chr"],"align":["left"]},{"label":["skin_color"],"name":[5],"type":["chr"],"align":["left"]},{"label":["eye_color"],"name":[6],"type":["chr"],"align":["left"]},{"label":["birth_year"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["sex"],"name":[8],"type":["chr"],"align":["left"]},{"label":["gender"],"name":[9],"type":["chr"],"align":["left"]},{"label":["homeworld"],"name":[10],"type":["chr"],"align":["left"]},{"label":["species"],"name":[11],"type":["chr"],"align":["left"]},{"label":["films"],"name":[12],"type":["list"],"align":["right"]},{"label":["vehicles"],"name":[13],"type":["list"],"align":["right"]},{"label":["starships"],"name":[14],"type":["list"],"align":["right"]}],"data":[{"1":"Luke Skywalker","2":"172","3":"77","4":"blond","5":"fair","6":"blue","7":"19.0","8":"male","9":"masculine","10":"Tatooine","11":"Human","12":"<chr [5]>","13":"<chr [2]>","14":"<chr [2]>"},{"1":"Anakin Skywalker","2":"188","3":"84","4":"blond","5":"fair","6":"blue","7":"41.9","8":"male","9":"masculine","10":"Tatooine","11":"Human","12":"<chr [3]>","13":"<chr [2]>","14":"<chr [3]>"},{"1":"Finis Valorum","2":"170","3":"NA","4":"blond","5":"fair","6":"blue","7":"91.0","8":"male","9":"masculine","10":"Coruscant","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="kombinace-filtrů" class="slide level2">
+<h2>Kombinace filtrů</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb70-2"><a href="#cb70-2"></a>  <span class="fu">filter</span>(</span>
+<span id="cb70-3"><a href="#cb70-3"></a>    hair_color <span class="sc">==</span> <span class="st">"brown"</span>,</span>
+<span id="cb70-4"><a href="#cb70-4"></a>    eye_color <span class="sc">==</span> <span class="st">"blue"</span>,</span>
+<span id="cb70-5"><a href="#cb70-5"></a>    height <span class="sc">&gt;</span> <span class="dv">190</span></span>
+<span id="cb70-6"><a href="#cb70-6"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb70-7"><a href="#cb70-7"></a>  <span class="fu">select</span>(name, height, hair_color, eye_color)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["height"],"name":[2],"type":["int"],"align":["right"]},{"label":["hair_color"],"name":[3],"type":["chr"],"align":["left"]},{"label":["eye_color"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"Chewbacca","2":"228","3":"brown","4":"blue"},{"1":"Qui-Gon Jinn","2":"193","3":"brown","4":"blue"},{"1":"Tarfful","2":"234","3":"brown","4":"blue"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="další-funkce-na-výběr-řádků" class="slide level2">
+<h2>Další funkce na výběr řádků</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb71-2"><a href="#cb71-2"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["height"],"name":[2],"type":["int"],"align":["right"]},{"label":["mass"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hair_color"],"name":[4],"type":["chr"],"align":["left"]},{"label":["skin_color"],"name":[5],"type":["chr"],"align":["left"]},{"label":["eye_color"],"name":[6],"type":["chr"],"align":["left"]},{"label":["birth_year"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["sex"],"name":[8],"type":["chr"],"align":["left"]},{"label":["gender"],"name":[9],"type":["chr"],"align":["left"]},{"label":["homeworld"],"name":[10],"type":["chr"],"align":["left"]},{"label":["species"],"name":[11],"type":["chr"],"align":["left"]},{"label":["films"],"name":[12],"type":["list"],"align":["right"]},{"label":["vehicles"],"name":[13],"type":["list"],"align":["right"]},{"label":["starships"],"name":[14],"type":["list"],"align":["right"]}],"data":[{"1":"Luke Skywalker","2":"172","3":"77","4":"blond","5":"fair","6":"blue","7":"19","8":"male","9":"masculine","10":"Tatooine","11":"Human","12":"<chr [5]>","13":"<chr [2]>","14":"<chr [2]>"},{"1":"C-3PO","2":"167","3":"75","4":"NA","5":"gold","6":"yellow","7":"112","8":"none","9":"masculine","10":"Tatooine","11":"Droid","12":"<chr [6]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"R2-D2","2":"96","3":"32","4":"NA","5":"white, blue","6":"red","7":"33","8":"none","9":"masculine","10":"Naboo","11":"Droid","12":"<chr [7]>","13":"<chr [0]>","14":"<chr [0]>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb72-2"><a href="#cb72-2"></a>  <span class="fu">slice_tail</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["height"],"name":[2],"type":["int"],"align":["right"]},{"label":["mass"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hair_color"],"name":[4],"type":["chr"],"align":["left"]},{"label":["skin_color"],"name":[5],"type":["chr"],"align":["left"]},{"label":["eye_color"],"name":[6],"type":["chr"],"align":["left"]},{"label":["birth_year"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["sex"],"name":[8],"type":["chr"],"align":["left"]},{"label":["gender"],"name":[9],"type":["chr"],"align":["left"]},{"label":["homeworld"],"name":[10],"type":["chr"],"align":["left"]},{"label":["species"],"name":[11],"type":["chr"],"align":["left"]},{"label":["films"],"name":[12],"type":["list"],"align":["right"]},{"label":["vehicles"],"name":[13],"type":["list"],"align":["right"]},{"label":["starships"],"name":[14],"type":["list"],"align":["right"]}],"data":[{"1":"BB8","2":"NA","3":"NA","4":"none","5":"none","6":"black","7":"NA","8":"none","9":"masculine","10":"NA","11":"Droid","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Captain Phasma","2":"NA","3":"NA","4":"unknown","5":"unknown","6":"unknown","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Padmé Amidala","2":"165","3":"45","4":"brown","5":"light","6":"brown","7":"46","8":"female","9":"feminine","10":"Naboo","11":"Human","12":"<chr [3]>","13":"<chr [0]>","14":"<chr [3]>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="další-funkce-na-výběr-řádků-1" class="slide level2">
+<h2>Další funkce na výběr řádků</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb73-2"><a href="#cb73-2"></a>  <span class="fu">slice_max</span>(<span class="at">n =</span> <span class="dv">3</span>, <span class="at">order_by =</span> height)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["height"],"name":[2],"type":["int"],"align":["right"]},{"label":["mass"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hair_color"],"name":[4],"type":["chr"],"align":["left"]},{"label":["skin_color"],"name":[5],"type":["chr"],"align":["left"]},{"label":["eye_color"],"name":[6],"type":["chr"],"align":["left"]},{"label":["birth_year"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["sex"],"name":[8],"type":["chr"],"align":["left"]},{"label":["gender"],"name":[9],"type":["chr"],"align":["left"]},{"label":["homeworld"],"name":[10],"type":["chr"],"align":["left"]},{"label":["species"],"name":[11],"type":["chr"],"align":["left"]},{"label":["films"],"name":[12],"type":["list"],"align":["right"]},{"label":["vehicles"],"name":[13],"type":["list"],"align":["right"]},{"label":["starships"],"name":[14],"type":["list"],"align":["right"]}],"data":[{"1":"Yarael Poof","2":"264","3":"NA","4":"none","5":"white","6":"yellow","7":"NA","8":"male","9":"masculine","10":"Quermia","11":"Quermian","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Tarfful","2":"234","3":"136","4":"brown","5":"brown","6":"blue","7":"NA","8":"male","9":"masculine","10":"Kashyyyk","11":"Wookiee","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Lama Su","2":"229","3":"88","4":"none","5":"grey","6":"black","7":"NA","8":"male","9":"masculine","10":"Kamino","11":"Kaminoan","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb74-2"><a href="#cb74-2"></a>  <span class="fu">slice_min</span>(<span class="at">n =</span> <span class="dv">3</span>, <span class="at">order_by =</span> height)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["height"],"name":[2],"type":["int"],"align":["right"]},{"label":["mass"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hair_color"],"name":[4],"type":["chr"],"align":["left"]},{"label":["skin_color"],"name":[5],"type":["chr"],"align":["left"]},{"label":["eye_color"],"name":[6],"type":["chr"],"align":["left"]},{"label":["birth_year"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["sex"],"name":[8],"type":["chr"],"align":["left"]},{"label":["gender"],"name":[9],"type":["chr"],"align":["left"]},{"label":["homeworld"],"name":[10],"type":["chr"],"align":["left"]},{"label":["species"],"name":[11],"type":["chr"],"align":["left"]},{"label":["films"],"name":[12],"type":["list"],"align":["right"]},{"label":["vehicles"],"name":[13],"type":["list"],"align":["right"]},{"label":["starships"],"name":[14],"type":["list"],"align":["right"]}],"data":[{"1":"Yoda","2":"66","3":"17","4":"white","5":"green","6":"brown","7":"896","8":"male","9":"masculine","10":"NA","11":"Yoda's species","12":"<chr [5]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Ratts Tyerell","2":"79","3":"15","4":"none","5":"grey, blue","6":"unknown","7":"NA","8":"male","9":"masculine","10":"Aleen Minor","11":"Aleena","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Wicket Systri Warrick","2":"88","3":"20","4":"brown","5":"brown","6":"brown","7":"8","8":"male","9":"masculine","10":"Endor","11":"Ewok","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="hodnoty-na" class="slide level2">
+<h2>Hodnoty <code>NA</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb75-2"><a href="#cb75-2"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(height)) <span class="sc">|&gt;</span> </span>
+<span id="cb75-3"><a href="#cb75-3"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["height"],"name":[2],"type":["int"],"align":["right"]},{"label":["mass"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hair_color"],"name":[4],"type":["chr"],"align":["left"]},{"label":["skin_color"],"name":[5],"type":["chr"],"align":["left"]},{"label":["eye_color"],"name":[6],"type":["chr"],"align":["left"]},{"label":["birth_year"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["sex"],"name":[8],"type":["chr"],"align":["left"]},{"label":["gender"],"name":[9],"type":["chr"],"align":["left"]},{"label":["homeworld"],"name":[10],"type":["chr"],"align":["left"]},{"label":["species"],"name":[11],"type":["chr"],"align":["left"]},{"label":["films"],"name":[12],"type":["list"],"align":["right"]},{"label":["vehicles"],"name":[13],"type":["list"],"align":["right"]},{"label":["starships"],"name":[14],"type":["list"],"align":["right"]}],"data":[{"1":"Arvel Crynyd","2":"NA","3":"NA","4":"brown","5":"fair","6":"brown","7":"NA","8":"male","9":"masculine","10":"NA","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [1]>"},{"1":"Finn","2":"NA","3":"NA","4":"black","5":"dark","6":"dark","7":"NA","8":"male","9":"masculine","10":"NA","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Rey","2":"NA","3":"NA","4":"brown","5":"light","6":"hazel","7":"NA","8":"female","9":"feminine","10":"NA","11":"Human","12":"<chr [1]>","13":"<chr [0]>","14":"<chr [0]>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb76-2"><a href="#cb76-2"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(height)) <span class="sc">|&gt;</span> </span>
+<span id="cb76-3"><a href="#cb76-3"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["height"],"name":[2],"type":["int"],"align":["right"]},{"label":["mass"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hair_color"],"name":[4],"type":["chr"],"align":["left"]},{"label":["skin_color"],"name":[5],"type":["chr"],"align":["left"]},{"label":["eye_color"],"name":[6],"type":["chr"],"align":["left"]},{"label":["birth_year"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["sex"],"name":[8],"type":["chr"],"align":["left"]},{"label":["gender"],"name":[9],"type":["chr"],"align":["left"]},{"label":["homeworld"],"name":[10],"type":["chr"],"align":["left"]},{"label":["species"],"name":[11],"type":["chr"],"align":["left"]},{"label":["films"],"name":[12],"type":["list"],"align":["right"]},{"label":["vehicles"],"name":[13],"type":["list"],"align":["right"]},{"label":["starships"],"name":[14],"type":["list"],"align":["right"]}],"data":[{"1":"Luke Skywalker","2":"172","3":"77","4":"blond","5":"fair","6":"blue","7":"19","8":"male","9":"masculine","10":"Tatooine","11":"Human","12":"<chr [5]>","13":"<chr [2]>","14":"<chr [2]>"},{"1":"C-3PO","2":"167","3":"75","4":"NA","5":"gold","6":"yellow","7":"112","8":"none","9":"masculine","10":"Tatooine","11":"Droid","12":"<chr [6]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"R2-D2","2":"96","3":"32","4":"NA","5":"white, blue","6":"red","7":"33","8":"none","9":"masculine","10":"Naboo","11":"Droid","12":"<chr [7]>","13":"<chr [0]>","14":"<chr [0]>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="řazení-řádků" class="slide level2">
+<h2>Řazení řádků</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb77-2"><a href="#cb77-2"></a>  <span class="fu">arrange</span>(species, name) <span class="sc">|&gt;</span> </span>
+<span id="cb77-3"><a href="#cb77-3"></a>  <span class="fu">select</span>(species, name)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["species"],"name":[1],"type":["chr"],"align":["left"]},{"label":["name"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"Aleena","2":"Ratts Tyerell"},{"1":"Besalisk","2":"Dexter Jettster"},{"1":"Cerean","2":"Ki-Adi-Mundi"},{"1":"Clawdite","2":"Zam Wesell"},{"1":"Droid","2":"BB8"},{"1":"Droid","2":"C-3PO"},{"1":"Droid","2":"IG-88"},{"1":"Droid","2":"R2-D2"},{"1":"Droid","2":"R4-P17"},{"1":"Droid","2":"R5-D4"},{"1":"Dug","2":"Sebulba"},{"1":"Ewok","2":"Wicket Systri Warrick"},{"1":"Geonosian","2":"Poggle the Lesser"},{"1":"Gungan","2":"Jar Jar Binks"},{"1":"Gungan","2":"Roos Tarpals"},{"1":"Gungan","2":"Rugor Nass"},{"1":"Human","2":"Anakin Skywalker"},{"1":"Human","2":"Arvel Crynyd"},{"1":"Human","2":"Bail Prestor Organa"},{"1":"Human","2":"Beru Whitesun lars"},{"1":"Human","2":"Biggs Darklighter"},{"1":"Human","2":"Boba Fett"},{"1":"Human","2":"Cliegg Lars"},{"1":"Human","2":"Cordé"},{"1":"Human","2":"Darth Vader"},{"1":"Human","2":"Dooku"},{"1":"Human","2":"Dormé"},{"1":"Human","2":"Finis Valorum"},{"1":"Human","2":"Finn"},{"1":"Human","2":"Gregar Typho"},{"1":"Human","2":"Han Solo"},{"1":"Human","2":"Jango Fett"},{"1":"Human","2":"Jek Tono Porkins"},{"1":"Human","2":"Jocasta Nu"},{"1":"Human","2":"Lando Calrissian"},{"1":"Human","2":"Leia Organa"},{"1":"Human","2":"Lobot"},{"1":"Human","2":"Luke Skywalker"},{"1":"Human","2":"Mace Windu"},{"1":"Human","2":"Mon Mothma"},{"1":"Human","2":"Obi-Wan Kenobi"},{"1":"Human","2":"Owen Lars"},{"1":"Human","2":"Padmé Amidala"},{"1":"Human","2":"Palpatine"},{"1":"Human","2":"Poe Dameron"},{"1":"Human","2":"Qui-Gon Jinn"},{"1":"Human","2":"Raymus Antilles"},{"1":"Human","2":"Rey"},{"1":"Human","2":"Shmi Skywalker"},{"1":"Human","2":"Wedge Antilles"},{"1":"Human","2":"Wilhuff Tarkin"},{"1":"Hutt","2":"Jabba Desilijic Tiure"},{"1":"Chagrian","2":"Mas Amedda"},{"1":"Iktotchi","2":"Saesee Tiin"},{"1":"Kaleesh","2":"Grievous"},{"1":"Kaminoan","2":"Lama Su"},{"1":"Kaminoan","2":"Taun We"},{"1":"Kel Dor","2":"Plo Koon"},{"1":"Mirialan","2":"Barriss Offee"},{"1":"Mirialan","2":"Luminara Unduli"},{"1":"Mon Calamari","2":"Ackbar"},{"1":"Muun","2":"San Hill"},{"1":"Nautolan","2":"Kit Fisto"},{"1":"Neimodian","2":"Nute Gunray"},{"1":"Pau'an","2":"Tion Medon"},{"1":"Quermian","2":"Yarael Poof"},{"1":"Rodian","2":"Greedo"},{"1":"Skakoan","2":"Wat Tambor"},{"1":"Sullustan","2":"Nien Nunb"},{"1":"Tholothian","2":"Adi Gallia"},{"1":"Togruta","2":"Shaak Ti"},{"1":"Toong","2":"Ben Quadinaros"},{"1":"Toydarian","2":"Watto"},{"1":"Trandoshan","2":"Bossk"},{"1":"Twi'lek","2":"Ayla Secura"},{"1":"Twi'lek","2":"Bib Fortuna"},{"1":"Vulptereen","2":"Dud Bolt"},{"1":"Wookiee","2":"Chewbacca"},{"1":"Wookiee","2":"Tarfful"},{"1":"Xexto","2":"Gasgano"},{"1":"Yoda's species","2":"Yoda"},{"1":"Zabrak","2":"Darth Maul"},{"1":"Zabrak","2":"Eeth Koth"},{"1":"NA","2":"Captain Phasma"},{"1":"NA","2":"Quarsh Panaka"},{"1":"NA","2":"Ric Olié"},{"1":"NA","2":"Sly Moore"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="sestupné-řazení-řádků" class="slide level2">
+<h2>Sestupné řazení řádků</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb78-2"><a href="#cb78-2"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Droid"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb78-3"><a href="#cb78-3"></a>  <span class="fu">arrange</span>(species, <span class="fu">desc</span>(height)) <span class="sc">|&gt;</span> </span>
+<span id="cb78-4"><a href="#cb78-4"></a>  <span class="fu">select</span>(species, name, height)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["species"],"name":[1],"type":["chr"],"align":["left"]},{"label":["name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["height"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"Droid","2":"IG-88","3":"200"},{"1":"Droid","2":"C-3PO","3":"167"},{"1":"Droid","2":"R5-D4","3":"97"},{"1":"Droid","2":"R2-D2","3":"96"},{"1":"Droid","2":"R4-P17","3":"96"},{"1":"Droid","2":"BB8","3":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="odvozování-nových-sloupců" class="slide level2">
+<h2>Odvozování nových sloupců</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb79-2"><a href="#cb79-2"></a>  <span class="fu">select</span>(name<span class="sc">:</span>mass) <span class="sc">|&gt;</span> </span>
+<span id="cb79-3"><a href="#cb79-3"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb79-4"><a href="#cb79-4"></a>    <span class="at">bmi =</span> mass <span class="sc">/</span> (height <span class="sc">/</span> <span class="dv">100</span>) <span class="sc">**</span> <span class="dv">2</span>,</span>
+<span id="cb79-5"><a href="#cb79-5"></a>    <span class="at">name =</span> <span class="fu">if_else</span>(bmi <span class="sc">&gt;</span> <span class="dv">30</span>, <span class="fu">paste</span>(<span class="st">"tlouštík"</span>, name), name)</span>
+<span id="cb79-6"><a href="#cb79-6"></a>  )</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["height"],"name":[2],"type":["int"],"align":["right"]},{"label":["mass"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["bmi"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Luke Skywalker","2":"172","3":"77.0","4":"26.02758"},{"1":"C-3PO","2":"167","3":"75.0","4":"26.89232"},{"1":"tlouštík R2-D2","2":"96","3":"32.0","4":"34.72222"},{"1":"tlouštík Darth Vader","2":"202","3":"136.0","4":"33.33007"},{"1":"Leia Organa","2":"150","3":"49.0","4":"21.77778"},{"1":"tlouštík Owen Lars","2":"178","3":"120.0","4":"37.87401"},{"1":"Beru Whitesun lars","2":"165","3":"75.0","4":"27.54821"},{"1":"tlouštík R5-D4","2":"97","3":"32.0","4":"34.00999"},{"1":"Biggs Darklighter","2":"183","3":"84.0","4":"25.08286"},{"1":"Obi-Wan Kenobi","2":"182","3":"77.0","4":"23.24598"},{"1":"Anakin Skywalker","2":"188","3":"84.0","4":"23.76641"},{"1":"NA","2":"180","3":"NA","4":"NA"},{"1":"Chewbacca","2":"228","3":"112.0","4":"21.54509"},{"1":"Han Solo","2":"180","3":"80.0","4":"24.69136"},{"1":"Greedo","2":"173","3":"74.0","4":"24.72518"},{"1":"tlouštík Jabba Desilijic Tiure","2":"175","3":"1358.0","4":"443.42857"},{"1":"Wedge Antilles","2":"170","3":"77.0","4":"26.64360"},{"1":"tlouštík Jek Tono Porkins","2":"180","3":"110.0","4":"33.95062"},{"1":"tlouštík Yoda","2":"66","3":"17.0","4":"39.02663"},{"1":"Palpatine","2":"170","3":"75.0","4":"25.95156"},{"1":"Boba Fett","2":"183","3":"78.2","4":"23.35095"},{"1":"tlouštík IG-88","2":"200","3":"140.0","4":"35.00000"},{"1":"tlouštík Bossk","2":"190","3":"113.0","4":"31.30194"},{"1":"Lando Calrissian","2":"177","3":"79.0","4":"25.21625"},{"1":"Lobot","2":"175","3":"79.0","4":"25.79592"},{"1":"Ackbar","2":"180","3":"83.0","4":"25.61728"},{"1":"NA","2":"150","3":"NA","4":"NA"},{"1":"NA","2":"NA","3":"NA","4":"NA"},{"1":"Wicket Systri Warrick","2":"88","3":"20.0","4":"25.82645"},{"1":"Nien Nunb","2":"160","3":"68.0","4":"26.56250"},{"1":"Qui-Gon Jinn","2":"193","3":"89.0","4":"23.89326"},{"1":"Nute Gunray","2":"191","3":"90.0","4":"24.67038"},{"1":"NA","2":"170","3":"NA","4":"NA"},{"1":"Jar Jar Binks","2":"196","3":"66.0","4":"17.18034"},{"1":"Roos Tarpals","2":"224","3":"82.0","4":"16.34247"},{"1":"NA","2":"206","3":"NA","4":"NA"},{"1":"NA","2":"183","3":"NA","4":"NA"},{"1":"NA","2":"137","3":"NA","4":"NA"},{"1":"tlouštík Sebulba","2":"112","3":"40.0","4":"31.88776"},{"1":"NA","2":"183","3":"NA","4":"NA"},{"1":"NA","2":"163","3":"NA","4":"NA"},{"1":"Darth Maul","2":"175","3":"80.0","4":"26.12245"},{"1":"NA","2":"180","3":"NA","4":"NA"},{"1":"Ayla Secura","2":"178","3":"55.0","4":"17.35892"},{"1":"tlouštík Dud Bolt","2":"94","3":"45.0","4":"50.92802"},{"1":"NA","2":"122","3":"NA","4":"NA"},{"1":"Ben Quadinaros","2":"163","3":"65.0","4":"24.46460"},{"1":"Mace Windu","2":"188","3":"84.0","4":"23.76641"},{"1":"Ki-Adi-Mundi","2":"198","3":"82.0","4":"20.91623"},{"1":"Kit Fisto","2":"196","3":"87.0","4":"22.64681"},{"1":"NA","2":"171","3":"NA","4":"NA"},{"1":"Adi Gallia","2":"184","3":"50.0","4":"14.76843"},{"1":"NA","2":"188","3":"NA","4":"NA"},{"1":"NA","2":"264","3":"NA","4":"NA"},{"1":"Plo Koon","2":"188","3":"80.0","4":"22.63468"},{"1":"NA","2":"196","3":"NA","4":"NA"},{"1":"Gregar Typho","2":"185","3":"85.0","4":"24.83565"},{"1":"NA","2":"157","3":"NA","4":"NA"},{"1":"NA","2":"183","3":"NA","4":"NA"},{"1":"Poggle the Lesser","2":"183","3":"80.0","4":"23.88844"},{"1":"Luminara Unduli","2":"170","3":"56.2","4":"19.44637"},{"1":"Barriss Offee","2":"166","3":"50.0","4":"18.14487"},{"1":"NA","2":"165","3":"NA","4":"NA"},{"1":"Dooku","2":"193","3":"80.0","4":"21.47709"},{"1":"NA","2":"191","3":"NA","4":"NA"},{"1":"Jango Fett","2":"183","3":"79.0","4":"23.58984"},{"1":"Zam Wesell","2":"168","3":"55.0","4":"19.48696"},{"1":"Dexter Jettster","2":"198","3":"102.0","4":"26.01775"},{"1":"Lama Su","2":"229","3":"88.0","4":"16.78076"},{"1":"NA","2":"213","3":"NA","4":"NA"},{"1":"NA","2":"167","3":"NA","4":"NA"},{"1":"Ratts Tyerell","2":"79","3":"15.0","4":"24.03461"},{"1":"NA","2":"96","3":"NA","4":"NA"},{"1":"Wat Tambor","2":"193","3":"48.0","4":"12.88625"},{"1":"NA","2":"191","3":"NA","4":"NA"},{"1":"Shaak Ti","2":"178","3":"57.0","4":"17.99015"},{"1":"tlouštík Grievous","2":"216","3":"159.0","4":"34.07922"},{"1":"Tarfful","2":"234","3":"136.0","4":"24.83746"},{"1":"Raymus Antilles","2":"188","3":"79.0","4":"22.35174"},{"1":"Sly Moore","2":"178","3":"48.0","4":"15.14960"},{"1":"Tion Medon","2":"206","3":"80.0","4":"18.85192"},{"1":"NA","2":"NA","3":"NA","4":"NA"},{"1":"NA","2":"NA","3":"NA","4":"NA"},{"1":"NA","2":"NA","3":"NA","4":"NA"},{"1":"NA","2":"NA","3":"NA","4":"NA"},{"1":"NA","2":"NA","3":"NA","4":"NA"},{"1":"Padmé Amidala","2":"165","3":"45.0","4":"16.52893"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="složitější-vektorové-větvení" class="slide level2">
+<h2>Složitější vektorové větvení</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb80-2"><a href="#cb80-2"></a>  <span class="fu">select</span>(name<span class="sc">:</span>mass) <span class="sc">|&gt;</span> </span>
+<span id="cb80-3"><a href="#cb80-3"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb80-4"><a href="#cb80-4"></a>    <span class="at">bmi =</span> <span class="fu">round</span>(mass <span class="sc">/</span> (height <span class="sc">/</span> <span class="dv">100</span>) <span class="sc">**</span> <span class="dv">2</span>),</span>
+<span id="cb80-5"><a href="#cb80-5"></a>    <span class="at">postava =</span> <span class="fu">case_when</span>(</span>
+<span id="cb80-6"><a href="#cb80-6"></a>      bmi <span class="sc">&lt;</span> <span class="dv">25</span> <span class="sc">~</span> <span class="st">"hubeňour"</span>,</span>
+<span id="cb80-7"><a href="#cb80-7"></a>      bmi <span class="sc">&gt;=</span> <span class="dv">25</span> <span class="sc">&amp;</span> bmi <span class="sc">&lt;=</span> <span class="dv">30</span> <span class="sc">~</span> <span class="st">"akorát"</span>,</span>
+<span id="cb80-8"><a href="#cb80-8"></a>      bmi <span class="sc">&gt;</span> <span class="dv">30</span> <span class="sc">~</span> <span class="st">"tlouštík"</span></span>
+<span id="cb80-9"><a href="#cb80-9"></a>    )</span>
+<span id="cb80-10"><a href="#cb80-10"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb80-11"><a href="#cb80-11"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["height"],"name":[2],"type":["int"],"align":["right"]},{"label":["mass"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["bmi"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["postava"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"Luke Skywalker","2":"172","3":"77","4":"26","5":"akorát"},{"1":"C-3PO","2":"167","3":"75","4":"27","5":"akorát"},{"1":"R2-D2","2":"96","3":"32","4":"35","5":"tlouštík"},{"1":"Darth Vader","2":"202","3":"136","4":"33","5":"tlouštík"},{"1":"Leia Organa","2":"150","3":"49","4":"22","5":"hubeňour"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="agregace" class="slide level2">
+<h2>Agregace</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb81-2"><a href="#cb81-2"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb81-3"><a href="#cb81-3"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb81-4"><a href="#cb81-4"></a>    <span class="at">height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb81-5"><a href="#cb81-5"></a>  )</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["n"],"name":[1],"type":["int"],"align":["right"]},{"label":["height"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"87","2":"174.358"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="seskupování-řádků-a-agregace" class="slide level2">
+<h2>Seskupování řádků a agregace</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb82-2"><a href="#cb82-2"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb82-3"><a href="#cb82-3"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb82-4"><a href="#cb82-4"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb82-5"><a href="#cb82-5"></a>    <span class="at">avg_height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb82-6"><a href="#cb82-6"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb82-7"><a href="#cb82-7"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> n, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">with_ties =</span> <span class="cn">FALSE</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["species"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]},{"label":["avg_height"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Human","2":"35","3":"176.6452"},{"1":"Droid","2":"6","3":"131.2000"},{"1":"NA","2":"4","3":"181.3333"},{"1":"Gungan","2":"3","3":"208.6667"},{"1":"Kaminoan","2":"2","3":"221.0000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="funkce-count" class="slide level2">
+<h2>Funkce <code>count</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb83-2"><a href="#cb83-2"></a>  <span class="fu">count</span>(species, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["species"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Human","2":"35"},{"1":"Droid","2":"6"},{"1":"NA","2":"4"},{"1":"Gungan","2":"3"},{"1":"Kaminoan","2":"2"},{"1":"Mirialan","2":"2"},{"1":"Twi'lek","2":"2"},{"1":"Wookiee","2":"2"},{"1":"Zabrak","2":"2"},{"1":"Aleena","2":"1"},{"1":"Besalisk","2":"1"},{"1":"Cerean","2":"1"},{"1":"Clawdite","2":"1"},{"1":"Dug","2":"1"},{"1":"Ewok","2":"1"},{"1":"Geonosian","2":"1"},{"1":"Hutt","2":"1"},{"1":"Chagrian","2":"1"},{"1":"Iktotchi","2":"1"},{"1":"Kaleesh","2":"1"},{"1":"Kel Dor","2":"1"},{"1":"Mon Calamari","2":"1"},{"1":"Muun","2":"1"},{"1":"Nautolan","2":"1"},{"1":"Neimodian","2":"1"},{"1":"Pau'an","2":"1"},{"1":"Quermian","2":"1"},{"1":"Rodian","2":"1"},{"1":"Skakoan","2":"1"},{"1":"Sullustan","2":"1"},{"1":"Tholothian","2":"1"},{"1":"Togruta","2":"1"},{"1":"Toong","2":"1"},{"1":"Toydarian","2":"1"},{"1":"Trandoshan","2":"1"},{"1":"Vulptereen","2":"1"},{"1":"Xexto","2":"1"},{"1":"Yoda's species","2":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="další-použití-group_by" class="slide level2">
+<h2>Další použití <code>group_by</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb84-2"><a href="#cb84-2"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb84-3"><a href="#cb84-3"></a>  <span class="fu">slice_max</span>(height) <span class="sc">|&gt;</span> </span>
+<span id="cb84-4"><a href="#cb84-4"></a>  <span class="fu">select</span>(species, name, height)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["species"],"name":[1],"type":["chr"],"align":["left"]},{"label":["name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["height"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"Aleena","2":"Ratts Tyerell","3":"79"},{"1":"Besalisk","2":"Dexter Jettster","3":"198"},{"1":"Cerean","2":"Ki-Adi-Mundi","3":"198"},{"1":"Clawdite","2":"Zam Wesell","3":"168"},{"1":"Droid","2":"IG-88","3":"200"},{"1":"Dug","2":"Sebulba","3":"112"},{"1":"Ewok","2":"Wicket Systri Warrick","3":"88"},{"1":"Geonosian","2":"Poggle the Lesser","3":"183"},{"1":"Gungan","2":"Roos Tarpals","3":"224"},{"1":"Human","2":"Darth Vader","3":"202"},{"1":"Hutt","2":"Jabba Desilijic Tiure","3":"175"},{"1":"Chagrian","2":"Mas Amedda","3":"196"},{"1":"Iktotchi","2":"Saesee Tiin","3":"188"},{"1":"Kaleesh","2":"Grievous","3":"216"},{"1":"Kaminoan","2":"Lama Su","3":"229"},{"1":"Kel Dor","2":"Plo Koon","3":"188"},{"1":"Mirialan","2":"Luminara Unduli","3":"170"},{"1":"Mon Calamari","2":"Ackbar","3":"180"},{"1":"Muun","2":"San Hill","3":"191"},{"1":"Nautolan","2":"Kit Fisto","3":"196"},{"1":"Neimodian","2":"Nute Gunray","3":"191"},{"1":"Pau'an","2":"Tion Medon","3":"206"},{"1":"Quermian","2":"Yarael Poof","3":"264"},{"1":"Rodian","2":"Greedo","3":"173"},{"1":"Skakoan","2":"Wat Tambor","3":"193"},{"1":"Sullustan","2":"Nien Nunb","3":"160"},{"1":"Tholothian","2":"Adi Gallia","3":"184"},{"1":"Togruta","2":"Shaak Ti","3":"178"},{"1":"Toong","2":"Ben Quadinaros","3":"163"},{"1":"Toydarian","2":"Watto","3":"137"},{"1":"Trandoshan","2":"Bossk","3":"190"},{"1":"Twi'lek","2":"Bib Fortuna","3":"180"},{"1":"Vulptereen","2":"Dud Bolt","3":"94"},{"1":"Wookiee","2":"Tarfful","3":"234"},{"1":"Xexto","2":"Gasgano","3":"122"},{"1":"Yoda's species","2":"Yoda","3":"66"},{"1":"Zabrak","2":"Darth Maul","3":"175"},{"1":"NA","2":"Ric Olié","3":"183"},{"1":"NA","2":"Quarsh Panaka","3":"183"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="a-to-je-ze-základů-r-všechno--" class="title-slide slide level1 center">
+<h1>A to je ze základů R všechno :-)</h1>
+
+</section>
+<section id="další-informace-ke-studiu-r" class="slide level2">
+<h2>Další informace ke studiu R</h2>
+<ul>
+<li>Moje knížka <a href="https://www.prokopsw.cz/bookdown/excel-r/">Od excelu k R</a> – domácí úkol!</li>
+<li><a href="https://meghan.rbind.io/slides/neair/neair.html#/title-slide">Streamlining with R</a> od Meghan Hallové</li>
+<li>Taháky v RStudiu</li>
+<li>Pro pokročilé: <a href="https://r4ds.had.co.nz/">R for Data Science</a> od Hedlleyho Wickhama</li>
+</ul>
+<div class="footer footer-default">
+
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="workshop-r-intro_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="workshop-r-intro_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="workshop-r-intro_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="workshop-r-intro_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="workshop-r-intro_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="workshop-r-intro_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="workshop-r-intro_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="workshop-r-intro_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="workshop-r-intro_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="workshop-r-intro_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Zkopírováno!");
+        setTimeout(function() {
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+        tippyHover(ref, function() {
+          var popup = window.document.createElement('div');
+          cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    });
+    </script>
+    
+
+</body></html>

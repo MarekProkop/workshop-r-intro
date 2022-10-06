@@ -1,0 +1,729 @@
+---
+title: "Úvod do R a RStudia"
+subtitle: "Po dvou hodinách zvládnete v R víc, než v Excelu po pěti letech ;-)"
+author: "Marek Prokop"
+institute: "PROKOP software s.r.o."
+date: last-modified
+date-format: "D. M. YYYY"
+lang: "cs-CZ"
+execute: 
+  echo: true
+format: 
+  revealjs:
+    theme: ["simple", "slides.scss"]
+    slide-number: true
+    width: 1600
+    height: 900
+    df-print: paged
+---
+
+# Co je R
+
+## Programovací jazyk pro statistiku a práci s daty
+
+-   je open source
+-   je zadarmo
+-   běží na všech běžných operačních systémech
+-   má rozsáhlou a velmi přátelskou komunitu
+-   může běžet i v cloudu
+
+# V čem je R lepší než Excel
+
+## Dokumentovaný postup
+
+Když teď něco uděláte, dokážete i po roce zjist, jak jste to udělali, a proč zrovna takhle.
+
+## Reprodukovatelnost
+
+Co uděláte jednou, dokážete kdykoli zopakovat s jinými daty či parametry.
+
+## Spolupráce
+
+Práci na větším projektu snadno rozdělíte mezi víc lidí. kód můžete verzovat v Gitu.
+
+## Rychlost
+
+R má víc funkcí než Excel, umí toho víc, a v důsledku uděláte práci rychleji. Někdy fakt o hodně rychleji.
+
+## Přístup k datům
+
+R dokáže načítat data z databází, spreadsheetů, textových souborů, webu a všech možných API. Cpy&paste už nebudete potřebovat.
+
+## Automatizace
+
+Pomocí R dokážete automatizovat i dost komplexní procesy a postupy.
+
+## Výstupy
+
+V R jdou tvořit luxusní reporty, dashboardy a mnoho jiných výstupů. I tato prezentace je napsaná v R.
+
+# V čem je R horší než Excel
+
+::: {.fragment .fade-left}
+Musíte se ho naučit.
+:::
+
+# Instalace a nastavení
+
+## Instalace R
+
+Především potřebujete základní jazyk R. Nainstalujete ho z adresy <https://cloud.r-project.org/>.
+
+![](https://www.prokopsw.cz/bookdown/excel-r/img/r-01.png)
+
+## Instalace RStudia
+
+Nainstalujte bezplatnou verzi **RStudio Desktop** z adresy <https://www.rstudio.com/products/rstudio/download/>.
+
+![](images/paste-486C002D.png){fig-align="center"}
+
+## Nastavení RStudia -- .RData
+
+![](https://www.prokopsw.cz/bookdown/excel-r/img/rstudio-options-01.png)
+
+## Nastavení RStudia -- native pipe
+
+![](https://www.prokopsw.cz/bookdown/excel-r/img/rstudio-options-02.png)
+
+## Balíčky
+
+Funkčnost základního R rozšiřují balíčky (*packages*). Pro začátek si nainstalujte balíček **tidyverse**.
+
+Menu *Tools* příkaz *Install Packages*
+
+![](https://www.prokopsw.cz/bookdown/excel-r/img/install-packages-01.png)
+
+## Založe si „školní" projekt
+
+Příkaz *New Project...* z menu *File*
+
+![](https://www.prokopsw.cz/bookdown/excel-r/img/rstudio-project-01.png)
+
+------------------------------------------------------------------------
+
+![](https://www.prokopsw.cz/bookdown/excel-r/img/rstudio-project-02.png)
+
+------------------------------------------------------------------------
+
+![](https://www.prokopsw.cz/bookdown/excel-r/img/rstudio-project-03.png) \# Práce v RStudiu
+
+## Interaktivní práce v konzoli
+
+![](images/paste-0C0C9395.png)
+
+------------------------------------------------------------------------
+
+![Operátor \<- vložíte Alt+-](images/paste-14B8FE5D.png)
+
+------------------------------------------------------------------------
+
+![](images/paste-3025FB06.png)
+
+## Psaní skriptů
+
+![File -\> New File -\> R Script](images/paste-F62DB4C4.png)
+
+------------------------------------------------------------------------
+
+![](images/paste-663844EA.png)
+
+------------------------------------------------------------------------
+
+![](images/paste-21D75E68.png)
+
+## R Markdown
+
+![](images/paste-63C0EF69.png)
+
+------------------------------------------------------------------------
+
+![](images/paste-DCEECEC8.png)
+
+------------------------------------------------------------------------
+
+![](images/paste-0C05C89D.png)
+
+------------------------------------------------------------------------
+
+![](images/paste-E493FEDA.png)
+
+# Základy R Markdownu
+
+## Proč R Markdown
+
+-   Všechno, co uděláte, budete mít uložené a můžete s k tomu kdykoli vrátit.
+
+-   Ke kódu si můžete psát vlastní komentáře -- co chcete udělat, proč to děláte zrovna takhle, co z toho vyplývá atd.
+
+-   Můžete snadno spouštět jak celý kód, tak jeho logické části.
+
+-   Výsledky vidíte rovnou u kódu, který je vytvořil.
+
+-   Výstupy můžete snadno sdílet s lidmi, kteří R nepoužívají.
+
+## Druhy R Markdownu
+
+::: columns
+::: {.column width="50%"}
+### Podle chování
+
+-   R Notebook
+
+-   R Document
+
+-   R Presentation
+
+-   Quarto Document
+
+-   Quarto Presentation
+:::
+
+::: {.column width="50%"}
+### Podle výstupu
+
+-   HTML
+
+-   PDF
+
+-   Word
+
+-   Powert Point
+
+-   Markdown pro Github
+
+-   a asi 20 dalších formátů
+:::
+:::
+
+Pro začátek vám bude stačit jenom **R Notebook**.
+
+## Markdown pro běžný text
+
+``` markdown
+# Tohle je nadpis 1. úrovně
+
+Tohle je běžný odstavec. Víc odstavců je od sebe odděleno dvěma Entry čili prázdným řádkem.
+
+## Tohle je nadpis 2. úrovně
+
+Tohle je příklad [odkazu v textu](https://example.com). A tohle je příklad odrážek:
+
+- první odrážka,
+- druhá odrážka,
+- třetí odrážka.
+
+Jdou udělat i číslované body, které se automaticky očíslují podle pořadí:
+
+1. První bod.
+1. Druhý bod.
+1. Poslední bod.
+```
+
+## Markdown pro běžný text -- výsledek
+
+![](https://www.prokopsw.cz/bookdown/excel-r/img/markdown-01.png)
+
+## Markdown s kódem v R
+
+\
+R Mardown je Markdown, do kterého jsou zamíchané kusy eRkového kódu.
+
+\
+
+    Libovolný text v Markdownu…
+
+    ```{{r}}
+    5 + 15
+    ```
+
+    Jiný libovolný text v Markdownu…
+
+    ```{{r}}
+    100 - 10
+    ```
+
+\
+Blok kódu v R přidáte klávesovou zkratkou `Ctrl`+`Alt`+`I`.
+
+## Výpis tabulky
+
+```{r}
+mtcars
+```
+
+## Zobrazení grafu
+
+```{r}
+library(ggplot2)
+mtcars |> 
+  ggplot(aes(hp, mpg)) +
+  geom_point()
+```
+
+# Základy R
+
+## Čísla a aritmetické operace
+
+\
+Číslo je prostě číslo.
+
+```{r}
+15
+```
+
+```{r}
+3.14
+```
+
+\
+S čísly jde počítat.
+
+```{r}
+10 + 20
+```
+
+```{r}
+20 - 5
+```
+
+```{r}
+20 / 5
+```
+
+```{r}
+5 * 4
+```
+
+```{r}
+(5 * 4) / 2
+```
+
+## Znakové řetězce
+
+Znakový řetězec se dává do uvozovek nebo apostrofů.
+
+```{r}
+"Tohle je zanový řetězec"
+```
+
+```{r}
+'A tohle je taky znakový řetězec'
+```
+
+Znakové řetězce jde spojovat funkcí `paste`.
+
+```{r}
+paste("první řetězec", "druhý řetězec")
+```
+
+Nebo s čárkou mezi místo mezery.
+
+```{r}
+paste("první řetězec", "druhý řetězec", sep = ",")
+```
+
+Nebo bez ničeho mezi.
+
+```{r}
+paste("první řetězec", "druhý řetězec", sep = "")
+```
+
+## Funkce
+
+-   Funkce fungují jako v Excelu, ale většinou se jmenují jinak.
+-   Parametry bez jména musí být v přesném pořadí.
+-   Pojmenované parametry mohou být v libovolném pořadí.
+
+Příklady:
+
+```{r}
+abs(-15)
+```
+
+```{r}
+round(15.9876, digits = 2)
+```
+
+```{r}
+floor(15.9876)
+```
+
+```{r}
+max(1, 2, 3, 4, 5)
+```
+
+## Vektory
+
+Proč se před každým výsledkem zobrazuje \[1\]?
+
+-   Protože základní datové typy v R (čísla, znakové řetězce, logické hodnoty a tzv. faktory) jsou vždy vektory.
+
+-   Vektor je uspořádaná posloupnost jedné či více hodnot.
+
+-   Výsledkem následující operace je tedy číselný vektor s jednou hodnotou.
+
+```{r}
+3 + 5
+```
+
+## Vytváření vektorů
+
+Když chcete vytvořit vektor s více než jednou hodnotou, použijete funkci `c`.
+
+```{r}
+c(1, 2, 3, 6, 5, 4)
+```
+
+\
+Nebo funkci `runif`, která generuje náhodná čísla z rovnoměrného rozložení.
+
+```{r}
+runif(n = 20, min = 1, max = 10)
+```
+
+\
+Nebo funkci `rnorm`, která generuje náhodná čísla z normálního rozložení.
+
+```{r}
+rnorm(n = 10)
+```
+
+\
+Nebo plno dalších funkcí. Část jich ještě poznáte, většinu ne, protože je nebudete potřebovat.
+
+## Počítání s vektory
+
+S vektory jde normálně počítat a vlastně dělat skoro cokoli.
+
+```{r}
+c(1, 2, 3) * 10
+```
+
+\
+
+```{r}
+c(1, 2, 3) * c(1, 2, 3)
+```
+
+\
+
+```{r}
+round(runif(n = 40, min = 1, max = 10))
+```
+
+\
+
+```{r}
+paste(
+  c("první vektor, první řetězec", "první vektor, druhý řetězec"), 
+  c("druhý vektor, první řetězec", "druhý vektor, druhý řetězec"),
+  sep = " - "
+)
+```
+
+## Nápověda k funkcím
+
+R má integrovanou nápovědu ke všem funkcím. Vyvoláte ji:
+
+-   Klávesou `F1` na názvu funkce v konzoli, skriptu, nebo bloku kódu v R Markdownu.
+-   Otazníkem a názvek funkce.
+
+```{r}
+?rnorm
+```
+
+Nápověda se v RStudiu zobrazí na panelu *Help*.
+
+## Pipes -- vnořování vs. řetězení funkcí
+
+\
+V předešlém příkladu jste viděli:
+
+```{r}
+round(runif(n = 40, min = 1, max = 10))
+```
+
+\
+V R budete používat fakt hodně funkcí a vnořování by bylo brzy nepřehledné. Proto existuje operátor *pipe*.
+
+```{r}
+runif(n = 40, min = 1, max = 10) |> 
+  round()
+```
+
+\
+
+```{r}
+runif(n = 40, min = 1, max = 10) |> 
+  round(digits = 1)
+```
+
+## Porovnání pipes a vnořování
+
+### Pipes
+
+```{{r}}
+objekt |> 
+  prvni_funkce(druhy_parametr_prvni_funkce, treti_parametr_prvni_funkce) |> 
+  druha_funkce(druhy_parametr_druhe_funkce) |> 
+  treti_funkce(druhy_parametr_treti_funkce) |> 
+  ctvrta_funkce() |> 
+  pata_funkce(druhy_parametr_pate_funkce)
+```
+
+### Vnořování
+
+```{{r}}
+pata_funkce(
+  ctvrta_funkce(
+    treti_funkce(
+      druha_funkce(
+        prvni_funkce(
+          objekt, druhy_parametr_prvni_funkce, treti_parametr_prvni_funkce
+        ), druhy_parametr_druhe_funkce
+      ), druhy_parametr_treti_funkce
+    )
+  ), druhy_parametr_pate funkce
+)
+```
+
+\
+
+Ve starších příkladech najdete pipe, která vypadá takhle `%>%`. Je to plusmínus totéž.
+
+## Objekty
+
+Výsledky jakýkoli operací (neboli *výrazů*) můžete ukládat do pojmenovaných objektů. V jiných programovacích jazycích se jim většinou říká proměnné. Jména objektů pak jde používat namísto konkrétních hodnot či výrazů.
+
+\
+
+```{r}
+muj_objekt <- runif(n = 20, min = 1, max = 10)
+
+muj_objekt |> 
+  round(digits = 1)
+```
+
+\
+
+-   Jména objektů se mohou skládat jen z písmen anglické abecedy, podtržítek a teček.
+-   Ukládají se do tzv. prostředí (*environment*).
+-   Po ukončení R (resp. RStudia) nebo po restartu session zmizí.
+
+## Klávesové zkratky {.smaller}
+
+| **Akce**                           | **Windows & Linux**    | **Mac**                   |
+|-----------------------------|--------------------|-----------------------|
+| Vlož blok kódu (chunk)             | `Ctrl`+`Alt`+`I`       | `Command`+`Option`+`I`    |
+| Vlož přiřazení (znaky \<-)         | `Alt`+`-`              | `Option`+`-`              |
+| Proveď řádek kódu s kurzorem       | `Ctrl`+`Enter`         | `Command`+`Enter`         |
+| Proveď blok kódu s kurzorem        | `Ctrl`+`Shift`+`Enter` | `Command`+`Shift`+`Enter` |
+| Proveď všechny bloky v souboru     | `Ctrl`+`Alt`+`R`       | `Command`+`Option`+`R`    |
+| Proveď všechny bloky nad kurzorem  | `Ctrl`+`Alt`+`P`       | `Command`+`Option`+`P`    |
+| Zobraz celý dokument v HTML        | `Ctrl`+`Shift`+`K`     | `Command`+`Shift`+`K`     |
+| Jdi na další blok nebo titulek     | `Ctrl`+`PgDown`        | `Command`+`PgDown`        |
+| Jdi na předchozí blok nebo titulek | `Ctrl`+`PgUp`          | `Command`+`PgUp`          |
+| Nápověda k funkci s kurzorem       | `F1`                   | `F1`                      |
+
+Pokud si je nechcete pamatovat, všechny mají i své tlačítko buď na toolbaru nad editorem, nebo přímo v pravém horním rohu každého bloku kódu. Funkce tlačítek se vám zobrazí po najetí myši.
+
+# Práce s daty
+
+## Tidyverse
+
+Pro práci s daty jsou vhodné balíčky
+
+-   **tibble** -- definuje „hezčí" data frame
+-   **reader** -- importuje dat z textových souborů
+-   **tidyr** -- pomáhá s čištěním dat
+-   **dplyr** -- umí všechny důležité datové transformace
+-   **stringr** -- obsahuje funkce pro práci s řetězci
+
+Všechny tyto balíčky a pár dalších jsou součástí „nadbalíčku" **tidyverse**, takže je jde načíst jedním příkazem:
+
+```{r}
+library(tidyverse)
+```
+
+## Manipulace s daty pomocí *dplyr*
+
+Pro začátek ukážu, jak pomocí balíčku *dplyr* můžete:
+
+-   vybírat sloupce
+-   vybírat (filtrovat) řádky
+-   řadit (třídit) řádky
+-   odvozovat nové sloupce
+-   seskupovat a agregovat řádky
+-   spojovat víc tabulek
+
+## Vzorový data frame
+
+```{r}
+starwars
+```
+
+## Průzkum funkcí `glimpse`
+
+```{r}
+starwars |> glimpse()
+```
+
+\
+
+V RStudiu můžete data frame zobrazit i funkcí `View`. Zkuste si to.
+
+## Výběr sloupců
+
+```{r}
+starwars |> 
+  select(name, sex, homeworld, hair_color)
+```
+
+## Filtrování řádků
+
+```{r}
+starwars |> 
+  filter(hair_color == "blond")
+```
+
+## Kombinace filtrů
+
+```{r}
+starwars |> 
+  filter(
+    hair_color == "brown",
+    eye_color == "blue",
+    height > 190
+  ) |> 
+  select(name, height, hair_color, eye_color)
+```
+
+## Další funkce na výběr řádků
+
+```{r}
+starwars |> 
+  slice_head(n = 3)
+```
+
+```{r}
+starwars |> 
+  slice_tail(n = 3)
+```
+
+## Další funkce na výběr řádků
+
+```{r}
+starwars |> 
+  slice_max(n = 3, order_by = height)
+```
+
+```{r}
+starwars |> 
+  slice_min(n = 3, order_by = height)
+```
+
+## Hodnoty `NA`
+
+```{r}
+starwars |> 
+  filter(is.na(height)) |> 
+  slice_head(n = 3)
+```
+
+```{r}
+starwars |> 
+  filter(!is.na(height)) |> 
+  slice_head(n = 3)
+```
+
+## Řazení řádků
+
+```{r}
+starwars |> 
+  arrange(species, name) |> 
+  select(species, name)
+```
+
+## Sestupné řazení řádků
+
+```{r}
+starwars |> 
+  filter(species == "Droid") |> 
+  arrange(species, desc(height)) |> 
+  select(species, name, height)
+```
+
+## Odvozování nových sloupců
+
+```{r}
+starwars |> 
+  select(name:mass) |> 
+  mutate(
+    bmi = mass / (height / 100) ** 2,
+    name = if_else(bmi > 30, paste("tlouštík", name), name)
+  )
+```
+
+## Složitější vektorové větvení
+
+```{r}
+starwars |> 
+  select(name:mass) |> 
+  mutate(
+    bmi = round(mass / (height / 100) ** 2),
+    postava = case_when(
+      bmi < 25 ~ "hubeňour",
+      bmi >= 25 & bmi <= 30 ~ "akorát",
+      bmi > 30 ~ "tlouštík"
+    )
+  ) |> 
+  slice_head(n = 5)
+```
+
+## Agregace
+
+```{r}
+starwars |> 
+  summarise(
+    n = n(),
+    height = mean(height, na.rm = TRUE)
+  )
+```
+
+## Seskupování řádků a agregace
+
+```{r}
+starwars |> 
+  group_by(species) |> 
+  summarise(
+    n = n(),
+    avg_height = mean(height, na.rm = TRUE)
+  ) |> 
+  slice_max(order_by = n, n = 5, with_ties = FALSE)
+```
+
+## Funkce `count`
+
+```{r}
+starwars |> 
+  count(species, sort = TRUE)
+```
+
+## Další použití `group_by`
+
+```{r}
+starwars |> 
+  group_by(species) |> 
+  slice_max(height) |> 
+  select(species, name, height)
+```
+
+
+# A to je ze základů R všechno :-)
+
+## Další informace ke studiu R
+
+-   Moje knížka [Od excelu k R](https://www.prokopsw.cz/bookdown/excel-r/) -- domácí úkol!
+-   [Streamlining with R](https://meghan.rbind.io/slides/neair/neair.html#/title-slide) od Meghan Hallové
+-   Taháky v RStudiu
+-   Pro pokročilé: [R for Data Science](https://r4ds.had.co.nz/) od Hedlleyho Wickhama
